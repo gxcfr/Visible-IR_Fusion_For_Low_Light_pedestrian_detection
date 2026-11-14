@@ -1,0 +1,24 @@
+# Experiment E002: YOLO11n Unimodal Thermal Baseline
+experiment_id: "E002_YOLO11N_THERMAL"
+model: "LLVIP_MULTIMODAL_RESEARCH/weights/yolo11n.pt"
+data:
+  path: "C:/VI Fusion for LL-PD/LLVIP_MULTIMODAL_RESEARCH/datasets"
+  train: "train_thermal.txt"
+  val: "val_thermal.txt"
+  test: "test_thermal.txt"
+  names:
+    0: person
+  nc: 1
+
+epochs: 50
+batch_size: 8
+imgsz: 640
+device: "0"
+workers: 2
+optimizer: "AdamW"
+lr0: 0.001
+weight_decay: 0.0005
+patience: 10
+amp: true
+seed: 42
+save_dir: "experiments/yolo11_thermal"

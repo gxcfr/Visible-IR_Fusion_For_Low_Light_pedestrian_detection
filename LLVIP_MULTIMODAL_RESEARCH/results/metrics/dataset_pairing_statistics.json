@@ -1,0 +1,60 @@
+{
+    "paired_pairs": 15488,
+    "unmatched_rgb": [],
+    "unmatched_ir": [],
+    "missing_annotations": [],
+    "sample_verification_count": 200,
+    "dimension_mismatches": [],
+    "invalid_boxes_sample": [
+        {
+            "pair_id": "020118",
+            "bbox": [
+                1025.0,
+                249.0,
+                1025.0,
+                250.0
+            ],
+            "reason": "non-positive or negative coordinates"
+        },
+        {
+            "pair_id": "020236",
+            "bbox": [
+                1103.0,
+                325.0,
+                1103.0,
+                326.0
+            ],
+            "reason": "non-positive or negative coordinates"
+        },
+        {
+            "pair_id": "090437",
+            "bbox": [
+                74.0,
+                863.0,
+                74.0,
+                870.0
+            ],
+            "reason": "non-positive or negative coordinates"
+        },
+        {
+            "pair_id": "091180",
+            "bbox": [
+                404.0,
+                290.0,
+                404.0,
+                291.0
+            ],
+            "reason": "non-positive or negative coordinates"
+        },
+        {
+            "pair_id": "170350",
+            "bbox": [
+                695.0,
+                950.0,
+                695.0,
+                957.0
+            ],
+            "reason": "non-positive or negative coordinates"
+        }
+    ]
+}

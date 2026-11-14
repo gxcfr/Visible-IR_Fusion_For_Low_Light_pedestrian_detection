@@ -1,0 +1,46 @@
+# Root .gitignore for Visible-IR Fusion for Low-Light Pedestrian Detection
+
+# Datasets - NEVER commit raw or processed datasets
+datasets/raw/
+datasets/LLVIP/
+datasets/labels/
+datasets/*.txt
+LLVIP/
+*.zip
+*.tar
+*.tar.gz
+*.7z
+C:/LLVIP/
+
+# Model weights and checkpoints
+*.pt
+*.pth
+*.onnx
+*.engine
+weights/
+LLVIP_MULTIMODAL_RESEARCH/weights/
+runs/
+experiments/**/weights/
+experiments/**/runs/
+
+# Byte-compiled / Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.coverage
+htmlcov/
+.ipynb_checkpoints/
+
+# Virtual Environments
+.venv/
+venv/
+env/
+ENV/
+
+# OS / IDE
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini

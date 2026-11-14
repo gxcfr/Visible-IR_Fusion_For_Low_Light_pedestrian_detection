@@ -1,0 +1,38 @@
+# Master Research Configuration File
+# Reliability-Aware Asymmetric Visible-Infrared Fusion for Low-Light Pedestrian Detection
+
+project:
+  name: "LLVIP_MULTIMODAL_RESEARCH"
+  title: "Reliability-Aware Asymmetric Visible-Infrared Fusion for Low-Light Pedestrian Detection"
+  seed: 42
+  device: "cuda:0"
+  amp: true
+
+hardware:
+  gpu: "NVIDIA GeForce RTX 4060 Laptop GPU"
+  vram_limit_gb: 8.0
+  conservative_batch_size: 2
+  num_workers: 2
+
+dataset:
+  name: "LLVIP"
+  root_path: "C:/LLVIP/LLVIP" # Confirmed extracted LLVIP dataset
+  image_size: 640
+  num_classes: 1
+  class_names: ["person"]
+  train_val_split_ratio: 0.85
+  fixed_seed: 42
+
+training_defaults:
+  epochs: 50
+  batch_size: 4
+  optimizer: "AdamW"
+  learning_rate: 0.001
+  weight_decay: 0.0005
+  patience: 10
+  mixed_precision: true
+
+paths:
+  manifest_path: "results/metrics/dataset_pairing_manifest.csv"
+  audit_path: "results/metrics/dataset_audit.json"
+  pairing_stats_path: "results/metrics/dataset_pairing_statistics.json"

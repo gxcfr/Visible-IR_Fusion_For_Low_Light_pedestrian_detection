@@ -1,0 +1,16 @@
+# Ultralytics Dataset Configuration for LLVIP Multimodal Detection
+path: "C:/VI Fusion for LL-PD/LLVIP_MULTIMODAL_RESEARCH/datasets"
+
+# Training, validation, and testing file lists for RGB modality
+train: "train_rgb.txt"
+val: "val_rgb.txt"
+test: "test_rgb.txt"
+
+# Class definition
+names:
+  0: person
+
+# Metadata
+nc: 1
+dataset_name: "LLVIP"
+resolution: 640

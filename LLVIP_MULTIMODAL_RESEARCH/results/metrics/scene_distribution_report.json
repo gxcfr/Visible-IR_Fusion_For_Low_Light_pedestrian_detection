@@ -1,0 +1,223 @@
+{
+    "total_scenes_detected": 26,
+    "all_scene_ids": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06",
+        "07",
+        "08",
+        "09",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14",
+        "15",
+        "16",
+        "17",
+        "18",
+        "19",
+        "20",
+        "21",
+        "22",
+        "23",
+        "24",
+        "25",
+        "26"
+    ],
+    "train_scene_count": 19,
+    "train_scene_ids": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06",
+        "07",
+        "08",
+        "09",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14",
+        "15",
+        "16",
+        "17",
+        "18",
+        "25"
+    ],
+    "test_scene_count": 7,
+    "test_scene_ids": [
+        "19",
+        "20",
+        "21",
+        "22",
+        "23",
+        "24",
+        "26"
+    ],
+    "overlapping_scenes_count": 0,
+    "overlapping_scenes": [],
+    "per_scene_breakdown": [
+        {
+            "scene_id": "01",
+            "split": "train",
+            "pair_count": 597,
+            "pedestrian_count": 2527
+        },
+        {
+            "scene_id": "02",
+            "split": "train",
+            "pair_count": 500,
+            "pedestrian_count": 1243
+        },
+        {
+            "scene_id": "03",
+            "split": "train",
+            "pair_count": 473,
+            "pedestrian_count": 1336
+        },
+        {
+            "scene_id": "04",
+            "split": "train",
+            "pair_count": 473,
+            "pedestrian_count": 1816
+        },
+        {
+            "scene_id": "05",
+            "split": "train",
+            "pair_count": 428,
+            "pedestrian_count": 1605
+        },
+        {
+            "scene_id": "06",
+            "split": "train",
+            "pair_count": 515,
+            "pedestrian_count": 1992
+        },
+        {
+            "scene_id": "07",
+            "split": "train",
+            "pair_count": 452,
+            "pedestrian_count": 1395
+        },
+        {
+            "scene_id": "08",
+            "split": "train",
+            "pair_count": 1518,
+            "pedestrian_count": 4889
+        },
+        {
+            "scene_id": "09",
+            "split": "train",
+            "pair_count": 1258,
+            "pedestrian_count": 3893
+        },
+        {
+            "scene_id": "10",
+            "split": "train",
+            "pair_count": 1313,
+            "pedestrian_count": 2742
+        },
+        {
+            "scene_id": "11",
+            "split": "train",
+            "pair_count": 468,
+            "pedestrian_count": 1157
+        },
+        {
+            "scene_id": "12",
+            "split": "train",
+            "pair_count": 461,
+            "pedestrian_count": 1296
+        },
+        {
+            "scene_id": "13",
+            "split": "train",
+            "pair_count": 500,
+            "pedestrian_count": 1557
+        },
+        {
+            "scene_id": "14",
+            "split": "train",
+            "pair_count": 558,
+            "pedestrian_count": 1446
+        },
+        {
+            "scene_id": "15",
+            "split": "train",
+            "pair_count": 603,
+            "pedestrian_count": 1251
+        },
+        {
+            "scene_id": "16",
+            "split": "train",
+            "pair_count": 567,
+            "pedestrian_count": 1141
+        },
+        {
+            "scene_id": "17",
+            "split": "train",
+            "pair_count": 512,
+            "pedestrian_count": 1060
+        },
+        {
+            "scene_id": "18",
+            "split": "train",
+            "pair_count": 406,
+            "pedestrian_count": 944
+        },
+        {
+            "scene_id": "19",
+            "split": "test",
+            "pair_count": 827,
+            "pedestrian_count": 2381
+        },
+        {
+            "scene_id": "20",
+            "split": "test",
+            "pair_count": 319,
+            "pedestrian_count": 645
+        },
+        {
+            "scene_id": "21",
+            "split": "test",
+            "pair_count": 436,
+            "pedestrian_count": 1182
+        },
+        {
+            "scene_id": "22",
+            "split": "test",
+            "pair_count": 381,
+            "pedestrian_count": 931
+        },
+        {
+            "scene_id": "23",
+            "split": "test",
+            "pair_count": 467,
+            "pedestrian_count": 1112
+        },
+        {
+            "scene_id": "24",
+            "split": "test",
+            "pair_count": 500,
+            "pedestrian_count": 954
+        },
+        {
+            "scene_id": "25",
+            "split": "train",
+            "pair_count": 423,
+            "pedestrian_count": 845
+        },
+        {
+            "scene_id": "26",
+            "split": "test",
+            "pair_count": 533,
+            "pedestrian_count": 1097
+        }
+    ]
+}

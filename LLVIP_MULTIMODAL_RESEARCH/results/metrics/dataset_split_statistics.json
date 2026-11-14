@@ -1,0 +1,48 @@
+{
+    "seed": 42,
+    "validation_scenes": [
+        "02",
+        "05",
+        "07",
+        "25"
+    ],
+    "training_scenes": [
+        "01",
+        "03",
+        "04",
+        "06",
+        "08",
+        "09",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14",
+        "15",
+        "16",
+        "17",
+        "18"
+    ],
+    "test_scenes": [
+        "19",
+        "20",
+        "21",
+        "22",
+        "23",
+        "24",
+        "26"
+    ],
+    "train_pairs": 10222,
+    "train_pairs_ratio_of_official_train": 85.01,
+    "val_pairs": 1803,
+    "val_pairs_ratio_of_official_train": 14.99,
+    "test_pairs": 3463,
+    "train_pedestrians": 29047,
+    "train_pedestrians_ratio": 85.09,
+    "val_pedestrians": 5088,
+    "val_pedestrians_ratio": 14.91,
+    "test_pedestrians": 8302,
+    "density_train_persons_per_pair": 2.84,
+    "density_val_persons_per_pair": 2.82,
+    "density_test_persons_per_pair": 2.4
+}

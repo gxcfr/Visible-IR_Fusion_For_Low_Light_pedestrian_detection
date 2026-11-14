@@ -1,0 +1,61 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+build/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+
+# Datasets - NEVER commit raw or generated label archives
+datasets/raw/
+datasets/LLVIP/
+datasets/labels/
+datasets/*.txt
+*.zip
+*.tar
+*.tar.gz
+*.7z
+data/
+LLVIP/
+
+# Model checkpoints and weights
+*.pt
+*.pth
+*.onnx
+*.engine
+weights/
+runs/
+experiments/**/weights/
+experiments/**/runs/
+
+# Logs and temporary files
+*.log
+.pytest_cache/
+.coverage
+htmlcov/
+.ipynb_checkpoints/
+
+# IDE and OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini

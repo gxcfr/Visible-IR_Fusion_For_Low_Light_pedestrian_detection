@@ -1,0 +1,20 @@
+# Dataset Configuration for LLVIP Multimodal Research
+dataset_name: "LLVIP"
+description: "Visible-Infrared Paired Dataset for Low-Light Vision"
+dataset_url: "https://bupt-ai-cz.github.io/LLVIP/"
+paper_arxiv: "https://arxiv.org/abs/2108.10831"
+
+classes:
+  0: "person"
+
+# Path to the confirmed local extracted dataset root
+local_dataset_root: "C:/LLVIP/LLVIP"
+
+splits:
+  official_train_ratio: 0.85 # internal train
+  internal_val_ratio: 0.15   # internal validation from official train
+  test_split: "test"         # official untouched test set
+
+resolutions:
+  baseline: [640, 640]
+  high_res: [960, 960]

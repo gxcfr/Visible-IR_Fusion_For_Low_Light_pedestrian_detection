@@ -1,0 +1,74 @@
+{
+    "total_xml_files_processed": 15488,
+    "total_original_boxes": 42437,
+    "total_converted_boxes": 42432,
+    "total_excluded_boxes": 5,
+    "retained_pedestrian_percentage": 99.9882,
+    "excluded_boxes_details": [
+        {
+            "file_id": "020118",
+            "box_index": 1,
+            "coordinates": [
+                1025.0,
+                249.0,
+                1025.0,
+                250.0
+            ],
+            "width": 0.0,
+            "height": 1.0,
+            "reason": "Degenerate zero or negative width/height line annotation"
+        },
+        {
+            "file_id": "020236",
+            "box_index": 5,
+            "coordinates": [
+                1103.0,
+                325.0,
+                1103.0,
+                326.0
+            ],
+            "width": 0.0,
+            "height": 1.0,
+            "reason": "Degenerate zero or negative width/height line annotation"
+        },
+        {
+            "file_id": "090437",
+            "box_index": 1,
+            "coordinates": [
+                74.0,
+                863.0,
+                74.0,
+                870.0
+            ],
+            "width": 0.0,
+            "height": 7.0,
+            "reason": "Degenerate zero or negative width/height line annotation"
+        },
+        {
+            "file_id": "091180",
+            "box_index": 2,
+            "coordinates": [
+                404.0,
+                290.0,
+                404.0,
+                291.0
+            ],
+            "width": 0.0,
+            "height": 1.0,
+            "reason": "Degenerate zero or negative width/height line annotation"
+        },
+        {
+            "file_id": "170350",
+            "box_index": 0,
+            "coordinates": [
+                695.0,
+                950.0,
+                695.0,
+                957.0
+            ],
+            "width": 0.0,
+            "height": 7.0,
+            "reason": "Degenerate zero or negative width/height line annotation"
+        }
+    ]
+}

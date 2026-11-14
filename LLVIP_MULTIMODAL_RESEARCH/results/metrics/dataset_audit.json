@@ -1,0 +1,21 @@
+{
+    "dataset_root": "C:\\LLVIP\\LLVIP",
+    "total_unique_identifiers": 15488,
+    "rgb_images_found": 15488,
+    "infrared_images_found": 15488,
+    "annotations_found": 15488,
+    "perfectly_paired_count": 15488,
+    "unmatched_rgb_count": 0,
+    "unmatched_ir_count": 0,
+    "missing_annotation_count": 0,
+    "train_pairs_count": 12025,
+    "test_pairs_count": 3463,
+    "total_person_instances": 42437,
+    "average_persons_per_image": 2.74,
+    "corrupted_images_detected": 0,
+    "invalid_boxes_detected": 5,
+    "dimension_mismatches_in_sample": 0,
+    "class_distribution": {
+        "person": 42437
+    }
+}

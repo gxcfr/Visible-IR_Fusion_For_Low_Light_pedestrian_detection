@@ -1,0 +1,24 @@
+# Experiment E003: YOLO26n Unimodal RGB Baseline
+experiment_id: "E003_YOLO26N_RGB"
+model: "LLVIP_MULTIMODAL_RESEARCH/weights/yolo26n.pt"
+data:
+  path: "C:/VI Fusion for LL-PD/LLVIP_MULTIMODAL_RESEARCH/datasets"
+  train: "train_rgb.txt"
+  val: "val_rgb.txt"
+  test: "test_rgb.txt"
+  names:
+    0: person
+  nc: 1
+
+epochs: 50
+batch_size: 8
+imgsz: 640
+device: "0"
+workers: 2
+optimizer: "AdamW"
+lr0: 0.001
+weight_decay: 0.0005
+patience: 10
+amp: true
+seed: 42
+save_dir: "experiments/yolo26_rgb"
