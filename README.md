@@ -1,11 +1,14 @@
 # Reliability-Aware Asymmetric Visible-Infrared Fusion for Low-Light Pedestrian Detection
 
-### Research Status: Final Audit Closure, Scene-Conditioned Analysis, and Protocol Design Completed (E001–E007 Reconciled; E008 Specified; Test Partition Strictly Sealed)
+### Research Status: Phase A / Stage 1 Reconciled; Training Pipeline Frozen (E008/E009 Deferred; Official Test Partition Strictly Sealed)
 
 - **Core Research Objective**: *"Investigate whether reliability-aware asymmetric visible-infrared fusion improves pedestrian detection under challenging illumination conditions relative to unimodal and conventional fusion baselines."*
+- **Execution Mandate**: **Zero additional training runs.** All evaluations operate strictly on frozen checkpoints (E001–E007). Proposed models E008/E009 and multi-seed training runs are formally **DEFERRED**.
 - **Dataset**: LLVIP (`C:\LLVIP\LLVIP`) — 15,488 verified pairs (100% paired, single class `person`).
 - **Splits**: Scene-aware group split (Train: 10,222 pairs / Val: 1,803 pairs / **Test: 3,463 pairs strictly untouched & sealed**).
-- **Hardware**: NVIDIA GeForce RTX 4060 Laptop GPU (8.0 GB VRAM, Ada Lovelace, SM 8.9).
+- **Hardware**: NVIDIA GeForce RTX 4060 Laptop GPU (8.0 GB VRAM, Ada Lovelace, SM 8.9), Windows 11.
+- **Software Stack**: PyTorch 2.5.1+cu121, CUDA 12.1, OpenCV 5.0.0, Ultralytics 8.4.144.
+- **Evaluation Framework**: Ultralytics `DetectionValidator.match_predictions` and `ap_per_class` on unletterboxed native $1280 \times 1024$ coordinates.
 - **Primary Architecture**: Ultralytics **YOLO26n** adopted for all baselines and multimodal architectures (E002–E007). Historical baseline retained: `E001_RGB_YOLO11N`.
 - **Git Remote**: `https://github.com/gxcfr/Visible-IR_Fusion_For_Low_Light_pedestrian_detection.git`
 
@@ -33,15 +36,15 @@ All seven experiments (E001–E007) were evaluated under a standardized, unified
 
 Measured on NVIDIA GeForce RTX 4060 Laptop GPU (50 warmup + 200 measured iterations, `torch.cuda.synchronize()`, full end-to-end pipeline):
 
-| Exp ID | Architecture | Modality | Params (M) | FLOPs (G) | Model Fwd (ms) | Model FPS | End-to-End (ms) | End-to-End FPS |
-|:---:|:---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| **E001** | YOLO11n | RGB | 2.59 | 6.4 | $7.59 \pm 0.40$ | 131.8 | $9.97 \pm 0.54$ | 100.3 |
-| **E002** | YOLO26n | RGB | 2.37 | 5.2 | $10.76 \pm 0.81$ | 92.9 | $13.03 \pm 0.93$ | 76.7 |
-| **E003** | YOLO26n | Thermal | 2.37 | 5.2 | $9.83 \pm 0.46$ | 101.7 | $12.31 \pm 0.62$ | 81.3 |
-| **E004** | YOLO26n | Late (WBF) | 4.74 | 10.4 | $20.38 \pm 0.65$ | 49.1 | $23.89 \pm 0.83$ | 41.9 |
-| **E005** | YOLO26n | Early (4CH) | 2.37 | 5.2 | $10.16 \pm 0.46$ | 98.4 | $14.41 \pm 0.69$ | 69.4 |
-| **E006** | YOLO26n | Feature Concat | 3.87 | 8.5 | $13.39 \pm 0.58$ | 74.7 | $17.48 \pm 0.77$ | 57.2 |
-| **E007** | Proposed Fusion | Asym Gated | 4.97 | 9.8 | $14.17 \pm 0.75$ | 70.6 | $17.94 \pm 0.89$ | 55.7 |
+| Exp ID | Architecture | Modality | Params (M) | Head ($nc$) | FLOPs (G) | Model Fwd (ms) | Model FPS | End-to-End (ms) | End-to-End FPS |
+|:---:|:---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| **E001** | YOLO11n | RGB | 2.59 | 1 | 6.5 | $7.59 \pm 0.40$ | 131.8 | $9.97 \pm 0.54$ | 100.3 |
+| **E002** | YOLO26n | RGB | 2.50 | 1 | 5.9 | $10.76 \pm 0.81$ | 92.9 | $13.03 \pm 0.93$ | 76.7 |
+| **E003** | YOLO26n | Thermal | 2.50 | 1 | 5.9 | $9.83 \pm 0.46$ | 101.7 | $12.31 \pm 0.62$ | 81.3 |
+| **E004** | YOLO26n | Late (WBF) | 5.01 | 1 + 1 | 11.8 | $20.38 \pm 0.65$ | 49.1 | $23.89 \pm 0.83$ | 41.9 |
+| **E005** | YOLO26n | Early (4CH) | 2.57 | 80 | 6.3 | $10.16 \pm 0.46$ | 98.4 | $14.41 \pm 0.69$ | 69.4 |
+| **E006** | YOLO26n | Feature Concat | 4.14 | 80 | 9.9 | $13.39 \pm 0.58$ | 74.7 | $17.48 \pm 0.77$ | 57.2 |
+| **E007** | Proposed Fusion | Asym Gated | 4.97 | 80 | 12.2 | $14.17 \pm 0.75$ | 70.6 | $17.94 \pm 0.89$ | 55.7 |
 
 ---
 
@@ -84,7 +87,20 @@ Measured on NVIDIA GeForce RTX 4060 Laptop GPU (50 warmup + 200 measured iterati
 
 ---
 
-## 📁 Phase 2 Final Reconciliation Deliverables (`research/audit_phase/final_reconciliation/`)
+## 📁 Final Phase Deliverables (`research/final_phase/`)
+
+- [01_AUDIT_RECONCILIATION.md](file:///C:/VI%20Fusion%20for%20LL-PD/research/final_phase/01_AUDIT_RECONCILIATION.md) — Master Stage 1 documentation reconciliation, exact parameter counts, and architecture realignment.
+- `02_GATE_ANALYSIS.md` — Stage 2 scene-conditioned correlation and block-bootstrap verification *(In Progress)*.
+- `03_INFERENCE_ABLATIONS.md` — Stage 3 inference-only gate interventions (IA001–IA004) *(Scheduled)*.
+- `04_ROBUSTNESS_ANALYSIS.md` — Stage 4 synthetic degradation stress-testing (R001–R007) *(Scheduled)*.
+- `05_VALIDATION_ANALYSIS.md` — Stage 5 consolidated validation & failure analysis *(Scheduled)*.
+- `06_COMPUTATIONAL_ANALYSIS.md` — Stage 6 computational latency and throughput report *(Scheduled)*.
+- `07_MODEL_FREEZE_REPORT.md` — Stage 7 model freeze protocol *(Hold for user approval before test partition)*.
+- `08_FINAL_TEST_RESULTS.md` — Stage 8 held-out official test set evaluation *(Blocked until approval)*.
+
+---
+
+## 📁 Historical Audit Reconciliation Archives (`research/audit_phase/final_reconciliation/`)
 
 - [FINAL_RESEARCH_AUDIT.md](file:///C:/VI%20Fusion%20for%20LL-PD/research/audit_phase/final_reconciliation/FINAL_RESEARCH_AUDIT.md) — Master comprehensive reconciliation document.
 - [CORRECTED_GATE_STATISTICS.json](file:///C:/VI%20Fusion%20for%20LL-PD/research/audit_phase/final_reconciliation/CORRECTED_GATE_STATISTICS.json) — Canonical gate statistics across all 1,803 validation pairs.
