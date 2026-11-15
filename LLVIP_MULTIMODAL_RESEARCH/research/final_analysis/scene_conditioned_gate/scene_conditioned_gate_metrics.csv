@@ -1,0 +1,7 @@
+Scope,Frames,Mean_Brightness,Mean_Visible_Contrast,Mean_Thermal_Contrast,Mean_Gate_P3,FG_Gate_P3,BG_Gate_P3,Pearson_r_Brightness,Pearson_r_VisContrast,Pearson_r_ThContrast,Spearman_rho_Brightness
+Scene 02,500,55.84,44.77,43.03,0.4937,0.3586,0.4987,0.3064,0.192,-0.5474,0.3161
+Scene 05,428,37.38,21.18,51.97,0.5482,0.3642,0.5585,-0.2654,-0.5266,-0.5361,-0.2091
+Scene 07,452,62.11,46.45,46.18,0.5104,0.3718,0.5144,0.4921,-0.3243,0.3611,0.5802
+Scene 25,423,87.49,56.56,49.17,0.4994,0.3764,0.5029,0.0898,-0.017,0.1371,0.1509
+Pooled (All 1803 Pairs),1803,60.46,42.36,47.38,0.5121,0.3674,0.5178,-0.3216,-0.5368,0.4719,-0.2302
+Within-Scene Centered,1803,0.0,0.0,0.0,0.0,,,0.1162,-0.0607,-0.1055,0.2007

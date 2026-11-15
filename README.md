@@ -1,6 +1,6 @@
 # Reliability-Aware Asymmetric Visible-Infrared Fusion for Low-Light Pedestrian Detection
 
-### Research Status: Phase A / Stage 1 Reconciled; Training Pipeline Frozen (E008/E009 Deferred; Official Test Partition Strictly Sealed)
+### Research Status: Phase B / Stage 2 Completed (Scene-Conditioned Gate Analysis, Simpson's Paradox & Block Bootstrap Verified; Training Frozen)
 
 - **Core Research Objective**: *"Investigate whether reliability-aware asymmetric visible-infrared fusion improves pedestrian detection under challenging illumination conditions relative to unimodal and conventional fusion baselines."*
 - **Execution Mandate**: **Zero additional training runs.** All evaluations operate strictly on frozen checkpoints (E001–E007). Proposed models E008/E009 and multi-seed training runs are formally **DEFERRED**.
@@ -90,8 +90,8 @@ Measured on NVIDIA GeForce RTX 4060 Laptop GPU (50 warmup + 200 measured iterati
 ## 📁 Final Phase Deliverables (`research/final_phase/`)
 
 - [01_AUDIT_RECONCILIATION.md](file:///C:/VI%20Fusion%20for%20LL-PD/research/final_phase/01_AUDIT_RECONCILIATION.md) — Master Stage 1 documentation reconciliation, exact parameter counts, and architecture realignment.
-- `02_GATE_ANALYSIS.md` — Stage 2 scene-conditioned correlation and block-bootstrap verification *(In Progress)*.
-- `03_INFERENCE_ABLATIONS.md` — Stage 3 inference-only gate interventions (IA001–IA004) *(Scheduled)*.
+- [02_GATE_ANALYSIS.md](file:///C:/VI%20Fusion%20for%20LL-PD/research/final_phase/02_GATE_ANALYSIS.md) — Stage 2 scene-conditioned correlation, Simpson's paradox, and block-bootstrap verification.
+- `03_INFERENCE_ABLATIONS.md` — Stage 3 inference-only gate interventions (IA001–IA004) *(Scheduled Next)*.
 - `04_ROBUSTNESS_ANALYSIS.md` — Stage 4 synthetic degradation stress-testing (R001–R007) *(Scheduled)*.
 - `05_VALIDATION_ANALYSIS.md` — Stage 5 consolidated validation & failure analysis *(Scheduled)*.
 - `06_COMPUTATIONAL_ANALYSIS.md` — Stage 6 computational latency and throughput report *(Scheduled)*.
