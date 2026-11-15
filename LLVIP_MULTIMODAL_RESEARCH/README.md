@@ -1,6 +1,6 @@
 # Reliability-Aware Asymmetric Visible-Infrared Fusion for Low-Light Pedestrian Detection
 
-### Research Status: Stage 7 Completed (Model Selection Frozen & Checkpoints Fingerprinted; Official Test Partition Sealed; Awaiting Approval to Unseal for Stage 8)
+### Research Status: Stage 8 Completed (Official Test Evaluation Completed Across 3,463 Test Pairs; Stage 9 Final Research Paper Package In Progress)
 
 - **Core Research Objective**: *"Investigate whether reliability-aware asymmetric visible-infrared fusion improves pedestrian detection under challenging illumination conditions relative to unimodal and conventional fusion baselines."*
 - **Execution Mandate**: **Zero additional training runs.** All evaluations operate strictly on frozen checkpoints (E001–E007). Proposed models E008/E009 and multi-seed training runs are formally **DEFERRED**.
@@ -73,6 +73,22 @@ Measured on NVIDIA GeForce RTX 4060 Laptop GPU (50 warmup + 200 measured iterati
 | **E006** | YOLO26n | Feature Concat | 4.14 | 80 | 9.9 | $13.39 \pm 0.58$ | 74.7 | $17.48 \pm 0.77$ | 57.2 |
 | **E007** | Proposed Fusion | Asym Gated | 4.97 | 80 | 12.2 | $14.17 \pm 0.75$ | 70.6 | $17.94 \pm 0.89$ | 55.7 |
 
+### Master Official Test Benchmark (3,463 Test Pairs, 8,302 Ground Truths)
+
+Following Stage 7 model freeze and cryptographic SHA256 registration, the official unseen LLVIP test partition was opened and evaluated across all 7 models:
+
+| Exp ID | Architecture | Input Modality | $mAP_{50}$ (%) | $mAP_{50-95}$ (%) | Recall@0.25 (%) | Prec@0.25 (%) | F1@0.25 (%) | True Positives | False Positives | False Negatives (Misses) | FP / Image |
+|:---:|:---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| **E001** | YOLO11n | Visible (RGB) | 79.34 | 42.35 | 68.36 | 92.94 | 78.78 | 5,675 | 431 | 2,627 | 0.124 |
+| **E002** | YOLO26n | Visible (RGB) | 81.44 | 44.16 | 72.79 | 89.98 | 80.48 | 6,043 | 673 | 2,259 | 0.194 |
+| **E003** | YOLO26n | Thermal (IR) | 93.34 | **59.35** | 87.77 | 90.04 | **88.89** | 7,287 | 806 | 1,015 | 0.233 |
+| **E004** | YOLO26n | Late (WBF) | **93.57** | 58.27 | 73.52 | **97.20** | 83.72 | 6,104 | **176** | 2,198 | **0.051** |
+| **E005** | YOLO26n | Early (4CH) | 56.00 | 32.26 | 60.33 | 54.32 | 57.17 | 5,009 | 4,213 | 3,293 | 1.217 |
+| **E006** | YOLO26n | Feature Concat | 91.00 | 57.23 | 86.86 | 81.56 | 84.13 | 7,211 | 1,630 | 1,091 | 0.471 |
+| **E007** | Proposed Fusion | Asym Gated | 91.43 | 56.76 | **88.52** | 81.22 | 84.71 | **7,349** | 1,699 | **953** | 0.491 |
+
+*Key Takeaway: Proposed Asymmetric Gated Fusion (**E007**) achieves the **highest recall (88.52%)** and fewest misses (**953 FNs**) of any model across the official unseen test set, successfully detecting **7,349 out of 8,302 pedestrians** (+62 pedestrians recovered over thermal-only E003).*
+
 ---
 
 ## 📊 Dataset Annotation Reconciliation
@@ -122,8 +138,8 @@ Measured on NVIDIA GeForce RTX 4060 Laptop GPU (50 warmup + 200 measured iterati
 - [04_ROBUSTNESS_ANALYSIS.md](file:///C:/VI%20Fusion%20for%20LL-PD/research/final_phase/04_ROBUSTNESS_ANALYSIS.md) — Stage 4 partial robustness study across 25 completed conditions, degradation slopes, and gate adaptation.
 - [05_VALIDATION_ANALYSIS.md](file:///C:/VI%20Fusion%20for%20LL-PD/research/final_phase/05_VALIDATION_ANALYSIS.md) — Stage 5 consolidated validation & failure analysis across Scenes 02, 05, 07, 25, error taxonomy, and visual panels.
 - [06_COMPUTATIONAL_ANALYSIS.md](file:///C:/VI%20Fusion%20for%20LL-PD/research/final_phase/06_COMPUTATIONAL_ANALYSIS.md) — Stage 6 computational efficiency, FLOPs, latency, and memory profiling on NVIDIA RTX 4060 GPU.
-- [07_MODEL_FREEZE_REPORT.md](file:///C:/VI%20Fusion%20for%20LL-PD/research/final_phase/07_MODEL_FREEZE_REPORT.md) — Stage 7 model selection freeze, cryptographic SHA256 checksums, and sealed test protocol *(GATEWAY HOLD)*.
-- `08_FINAL_TEST_RESULTS.md` — Stage 8 held-out official test set evaluation *(Blocked pending researcher approval)*.
+- [07_MODEL_FREEZE_REPORT.md](file:///C:/VI%20Fusion%20for%20LL-PD/research/final_phase/07_MODEL_FREEZE_REPORT.md) — Stage 7 model selection freeze, cryptographic SHA256 checksums, and sealed test protocol.
+- [08_FINAL_TEST_RESULTS.md](file:///C:/VI%20Fusion%20for%20LL-PD/research/final_phase/08_FINAL_TEST_RESULTS.md) — Stage 8 held-out official test set evaluation across 3,463 pairs and 7 unseen scenes.
 
 ---
 
