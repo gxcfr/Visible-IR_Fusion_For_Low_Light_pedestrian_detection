@@ -1,6 +1,6 @@
 # Reliability-Aware Asymmetric Visible-Infrared Fusion for Low-Light Pedestrian Detection
 
-### Research Status: Phase B / Stage 2 Completed (Scene-Conditioned Gate Analysis, Simpson's Paradox & Block Bootstrap Verified; Training Frozen)
+### Research Status: Phase C / Stage 3 Completed (Inference Gate Interventions IA001–IA004 Evaluated; Co-adaptation Quantified; Training Frozen)
 
 - **Core Research Objective**: *"Investigate whether reliability-aware asymmetric visible-infrared fusion improves pedestrian detection under challenging illumination conditions relative to unimodal and conventional fusion baselines."*
 - **Execution Mandate**: **Zero additional training runs.** All evaluations operate strictly on frozen checkpoints (E001–E007). Proposed models E008/E009 and multi-seed training runs are formally **DEFERRED**.
@@ -31,6 +31,17 @@ All seven experiments (E001–E007) were evaluated under a standardized, unified
 | **E007** | Proposed Fusion | Asym Gated Fusion | 93.70 | 55.98 | 87.52 | 90.25 | 88.86 | 90.41 | 5,245 |
 
 *Note: All metrics computed exclusively on `best.pt` checkpoints on 1,803 validation pairs in original $1280 \times 1024$ space.*
+
+### Inference-Only Gate Ablations on E007 (Stage 3 Sensitivity Analysis)
+
+| Condition ID | Gate Mode Description | $mAP_{50}$ (%) | $mAP_{50-95}$ (%) | Recall (@0.25) | Precision (@0.25) | F1 (@0.25) | FP / Image | Misses (FN) | Mean Fwd Latency |
+|:---:|:---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| **IA001** | **Learned Gate (Original E007)** | **93.70** | **55.98** | **90.25%** | **87.52%** | **88.86%** | **0.37** | **496** | 22.51 ms |
+| **IA002** | **Gate Zero ($G_V = 0.0$)** | 72.27 | 38.45 | 59.49% | 85.31% | 70.10% | 0.33 | 2,060 | 21.53 ms |
+| **IA003** | **Gate Half ($G_V = 0.5$)** | 84.24 | 48.12 | 80.32% | 75.17% | 77.66% | 0.75 | 1,001 | 21.97 ms |
+| **IA004** | **Gate One ($G_V = 1.0$)** | 78.03 | 40.37 | 78.31% | 60.37% | 68.18% | 1.46 | 1,103 | 22.02 ms |
+
+*Key Takeaway: Forcing $G_V=0.0$ at inference triggers representation starvation (mAP50 collapses from 93.70% to 72.27%), demonstrating network co-adaptation and proving that inference gate zeroing $\ne$ independently trained thermal baseline E003 (94.12%). Forcing $G_V=1.0$ quadruples false alarms (0.37 to 1.46 FP/img) by injecting unmodulated low-light noise.*
 
 ### Standardized GPU Latency and Computational Cost
 
@@ -91,8 +102,8 @@ Measured on NVIDIA GeForce RTX 4060 Laptop GPU (50 warmup + 200 measured iterati
 
 - [01_AUDIT_RECONCILIATION.md](file:///C:/VI%20Fusion%20for%20LL-PD/research/final_phase/01_AUDIT_RECONCILIATION.md) — Master Stage 1 documentation reconciliation, exact parameter counts, and architecture realignment.
 - [02_GATE_ANALYSIS.md](file:///C:/VI%20Fusion%20for%20LL-PD/research/final_phase/02_GATE_ANALYSIS.md) — Stage 2 scene-conditioned correlation, Simpson's paradox, and block-bootstrap verification.
-- `03_INFERENCE_ABLATIONS.md` — Stage 3 inference-only gate interventions (IA001–IA004) *(Scheduled Next)*.
-- `04_ROBUSTNESS_ANALYSIS.md` — Stage 4 synthetic degradation stress-testing (R001–R007) *(Scheduled)*.
+- [03_INFERENCE_ABLATIONS.md](file:///C:/VI%20Fusion%20for%20LL-PD/research/final_phase/03_INFERENCE_ABLATIONS.md) — Stage 3 inference-only gate interventions (IA001–IA004), co-adaptation collapse, and noise trade-offs.
+- `04_ROBUSTNESS_ANALYSIS.md` — Stage 4 synthetic degradation stress-testing (R001–R007) *(Scheduled Next)*.
 - `05_VALIDATION_ANALYSIS.md` — Stage 5 consolidated validation & failure analysis *(Scheduled)*.
 - `06_COMPUTATIONAL_ANALYSIS.md` — Stage 6 computational latency and throughput report *(Scheduled)*.
 - `07_MODEL_FREEZE_REPORT.md` — Stage 7 model freeze protocol *(Hold for user approval before test partition)*.
