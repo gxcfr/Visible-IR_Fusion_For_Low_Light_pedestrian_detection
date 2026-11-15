@@ -2,18 +2,37 @@
 
 ## Experiment Tracking Protocol
 Every experiment receives a unique deterministic identifier:
-- `E001_YOLO11N_RGB`
-- `E002_YOLO11N_THERMAL`
-- `E003_YOLO26N_RGB`
-- `E004_YOLO26N_THERMAL`
-- `E005_YOLO26N_WBF_LATE_FUSION`
-- `E006_CUSTOM_EARLY_FUSION`
-- `E007_CUSTOM_FEATURE_FUSION`
-- `E008_PROPOSED_ADAPTIVE_FUSION`
+- `E001_RGB_YOLO11N`: Historical Baseline (YOLO11n RGB-only) - COMPLETED
+- `E002_RGB_YOLO26N`: Primary Unimodal Baseline (YOLO26n RGB-only) - QUEUED
+- `E003_THERMAL_YOLO26N`: Primary Unimodal Baseline (YOLO26n Thermal-only) - QUEUED
+- `E004_LATE_FUSION_WBF_YOLO26N`: Multimodal Late Fusion via Weighted Boxes Fusion - QUEUED
+- `E005_EARLY_FUSION_4CH_YOLO26N`: Multimodal 4-Channel Early Fusion - QUEUED
+- `E006_FEATURE_FUSION_CONCAT_YOLO26N`: Multimodal Intermediate Feature Concatenation - QUEUED
+- `E007_PROPOSED_ASYMMETRIC_FUSION_YOLO26N`: Proposed Thermal-Primary Asymmetric Reliability-Aware Gated Fusion - QUEUED
 
 ---
 
 ## Log Entries
+
+### [Execution] Milestone 4 - Historical Baseline E001_RGB_YOLO11N
+- **Date**: 2026-11-15
+- **Status**: COMPLETED
+- **Architecture**: Ultralytics YOLO11n (`weights/yolo11n.pt`)
+- **Modality**: RGB Visible images (640x640)
+- **Training Setup**: 40 epochs scheduled, batch size 8, AdamW, lr0=0.001, weight decay=0.0005, AMP=True, cosine LR, seed=42.
+- **Duration**: 172.98 minutes (~2.88 hours), Peak VRAM: 1,126.61 MB.
+- **Stopping Dynamics**: Completed 40 epochs; Best Epoch: 25.
+- **Empirical Validation Metrics (best.pt)**:
+  - Precision: 91.24%
+  - Recall: 72.22%
+  - F1-Score: 80.62%
+  - mAP50: 80.57%
+  - mAP50-95: 41.31%
+- **Measured Latency (Batch 1, GPU Sync, 50 warmup, 200 runs)**:
+  - Model Latency: 10.69 ms (93.55 FPS)
+  - End-to-End Latency: 11.48 ms
+  - Model Parameters: 2,590,035 (~2.59M)
+- **Artifacts**: Checkpoints `best.pt`, `last.pt`, `metrics.json`, `results.csv`, PR and F1 curves saved in `experiments/E001_RGB_YOLO11N/`.
 
 ### [Initialization] Milestone 1 - Environment & Hardware Setup
 - **Date**: 2026-11-15

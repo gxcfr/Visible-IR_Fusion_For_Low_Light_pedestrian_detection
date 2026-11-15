@@ -78,6 +78,15 @@ def train_unimodal(
     with open(dataset_yaml_path, "w") as f:
         yaml.dump(dataset_dict, f, default_flow_style=False)
 
+    # Invalidate old labels.cache to guarantee fresh scan for this modality
+    cache_file = ROOT_DIR / "datasets" / "labels.cache"
+    if cache_file.exists():
+        try:
+            cache_file.unlink()
+            print(f"Cleared previous cache: {cache_file}")
+        except Exception as e:
+            print(f"Cache clear notice: {e}")
+
     # 2. Modality-specific augmentation parameters
     # For thermal: disable hue and saturation jitter (hsv_h=0, hsv_s=0) to preserve radiometric intensity
     if modality.lower() == "thermal":
