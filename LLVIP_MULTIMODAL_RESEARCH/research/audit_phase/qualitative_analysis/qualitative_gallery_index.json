@@ -1,0 +1,66 @@
+[
+    {
+        "scene_id": 2,
+        "pair_id": "020001",
+        "category": "standard_urban",
+        "title": "Scene 2: Standard Urban Low-Light Pedestrians",
+        "gt_count": 2,
+        "detections": {
+            "E002_RGB": 1,
+            "E003_Thermal": 1,
+            "E004_Late_WBF": 1,
+            "E005_Early_4CH": 2,
+            "E006_Feature_Concat": 1,
+            "E007_Proposed": 1
+        },
+        "file": "qualitative_scene_02_standard_urban.png"
+    },
+    {
+        "scene_id": 5,
+        "pair_id": "050001",
+        "category": "distant_small",
+        "title": "Scene 5: Extreme Darkness & Distant Small Pedestrians",
+        "gt_count": 2,
+        "detections": {
+            "E002_RGB": 2,
+            "E003_Thermal": 2,
+            "E004_Late_WBF": 2,
+            "E005_Early_4CH": 4,
+            "E006_Feature_Concat": 2,
+            "E007_Proposed": 3
+        },
+        "file": "qualitative_scene_05_distant_small.png"
+    },
+    {
+        "scene_id": 7,
+        "pair_id": "070001",
+        "category": "occluded_cluster",
+        "title": "Scene 7: Partial Occlusion & Overlapping Silhouettes",
+        "gt_count": 4,
+        "detections": {
+            "E002_RGB": 4,
+            "E003_Thermal": 4,
+            "E004_Late_WBF": 4,
+            "E005_Early_4CH": 3,
+            "E006_Feature_Concat": 4,
+            "E007_Proposed": 4
+        },
+        "file": "qualitative_scene_07_occluded_cluster.png"
+    },
+    {
+        "scene_id": 25,
+        "pair_id": "250001",
+        "category": "thermal_contrast_glare",
+        "title": "Scene 25: Thermal Contrast & Artificial Glare",
+        "gt_count": 2,
+        "detections": {
+            "E002_RGB": 1,
+            "E003_Thermal": 1,
+            "E004_Late_WBF": 2,
+            "E005_Early_4CH": 1,
+            "E006_Feature_Concat": 2,
+            "E007_Proposed": 2
+        },
+        "file": "qualitative_scene_25_thermal_contrast_glare.png"
+    }
+]

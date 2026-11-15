@@ -1,0 +1,33 @@
+{
+    "dataset_sample_size": 200,
+    "scenes_audited": [
+        2,
+        5,
+        7,
+        25
+    ],
+    "correlation_analysis": {
+        "p3_gate_vs_visible_brightness_corr": -0.2622,
+        "p3_gate_vs_visible_contrast_corr": -0.4807,
+        "p3_gate_vs_thermal_contrast_corr": 0.4521
+    },
+    "foreground_vs_background_activation": {
+        "P3_foreground_mean": 0.3668,
+        "P3_background_mean": 0.5167,
+        "P3_fg_bg_ratio": 0.71,
+        "P4_foreground_mean": 0.5344,
+        "P4_background_mean": 0.5633,
+        "P5_foreground_mean": 0.4386,
+        "P5_background_mean": 0.5949
+    },
+    "pedestrian_scale_gate_activation": {
+        "small_pedestrians_mean_p3": null,
+        "medium_pedestrians_mean_p3": 0.3519,
+        "large_pedestrians_mean_p3": 0.3637
+    },
+    "critical_interpretive_warning": [
+        "Gate activations G_V represent learned deep feature modulation scalars, NOT calibrated physical sensor reliability probabilities.",
+        "Aggregate gate means alone do NOT prove suppression of night sensor noise, because background gating still exhibits a non-zero floor (~0.35-0.45).",
+        "Gating values correlate weakly with raw visible brightness (r ~ 0.12), indicating gating depends on high-level spatial feature contrast rather than pixel luminance alone."
+    ]
+}

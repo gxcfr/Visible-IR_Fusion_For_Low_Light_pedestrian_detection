@@ -1,0 +1,86 @@
+[
+    {
+        "architecture": "E001_RGB_YOLO11N",
+        "input_modality": "Visible RGB",
+        "parameters": 2590035,
+        "model_only_latency_ms": 7.59,
+        "model_only_latency_std": 0.61,
+        "model_only_fps": 131.8,
+        "end_to_end_latency_ms": 9.97,
+        "end_to_end_latency_std": 1.28,
+        "end_to_end_fps": 100.3,
+        "pipeline_stages": "Letterbox(1024x1280->640x640) + GPU transfer + Forward + NMS(0.25/0.45) + scale_boxes"
+    },
+    {
+        "architecture": "E002_RGB_YOLO26N",
+        "input_modality": "Visible RGB",
+        "parameters": 2504190,
+        "model_only_latency_ms": 10.76,
+        "model_only_latency_std": 1.78,
+        "model_only_fps": 92.9,
+        "end_to_end_latency_ms": 13.03,
+        "end_to_end_latency_std": 2.91,
+        "end_to_end_fps": 76.7,
+        "pipeline_stages": "Letterbox(1024x1280->640x640) + GPU transfer + Forward + NMS(0.25/0.45) + scale_boxes"
+    },
+    {
+        "architecture": "E003_THERMAL_YOLO26N",
+        "input_modality": "Thermal IR",
+        "parameters": 2504190,
+        "model_only_latency_ms": 9.83,
+        "model_only_latency_std": 1.18,
+        "model_only_fps": 101.7,
+        "end_to_end_latency_ms": 12.31,
+        "end_to_end_latency_std": 1.2,
+        "end_to_end_fps": 81.3,
+        "pipeline_stages": "Letterbox(1024x1280->640x640) + GPU transfer + Forward + NMS(0.25/0.45) + scale_boxes"
+    },
+    {
+        "architecture": "E004_LATE_FUSION_WBF_YOLO26N",
+        "input_modality": "Visible RGB + Thermal IR",
+        "parameters": 5008380,
+        "model_only_latency_ms": 20.38,
+        "model_only_latency_std": 2.41,
+        "model_only_fps": 49.1,
+        "end_to_end_latency_ms": 23.89,
+        "end_to_end_latency_std": 1.48,
+        "end_to_end_fps": 41.9,
+        "pipeline_stages": "2x Letterbox + 2x GPU transfer + 2x Forward + 2x NMS + 2x scale_boxes + Weighted Boxes Fusion (WBF)"
+    },
+    {
+        "architecture": "E005_EARLY_FUSION_4CH_YOLO26N",
+        "input_modality": "Visible RGB + Thermal IR",
+        "parameters": 2572424,
+        "model_only_latency_ms": 10.16,
+        "model_only_latency_std": 1.34,
+        "model_only_fps": 98.4,
+        "end_to_end_latency_ms": 14.41,
+        "end_to_end_latency_std": 1.64,
+        "end_to_end_fps": 69.4,
+        "pipeline_stages": "Dual Letterbox + GPU transfer + Dual-stream forward + NMS + scale_boxes"
+    },
+    {
+        "architecture": "E006_FEATURE_FUSION_CONCAT_YOLO26N",
+        "input_modality": "Visible RGB + Thermal IR",
+        "parameters": 4135384,
+        "model_only_latency_ms": 13.39,
+        "model_only_latency_std": 1.26,
+        "model_only_fps": 74.7,
+        "end_to_end_latency_ms": 17.48,
+        "end_to_end_latency_std": 2.37,
+        "end_to_end_fps": 57.2,
+        "pipeline_stages": "Dual Letterbox + GPU transfer + Dual-stream forward + NMS + scale_boxes"
+    },
+    {
+        "architecture": "E007_PROPOSED_ASYMMETRIC_FUSION_YOLO26N",
+        "input_modality": "Visible RGB + Thermal IR",
+        "parameters": 4971992,
+        "model_only_latency_ms": 14.17,
+        "model_only_latency_std": 1.4,
+        "model_only_fps": 70.6,
+        "end_to_end_latency_ms": 17.94,
+        "end_to_end_latency_std": 1.6,
+        "end_to_end_fps": 55.7,
+        "pipeline_stages": "Dual Letterbox + GPU transfer + Dual-stream forward + NMS + scale_boxes"
+    }
+]
