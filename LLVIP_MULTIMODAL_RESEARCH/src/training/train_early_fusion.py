@@ -189,7 +189,7 @@ def train_early_fusion(
 
             epoch_loss += loss_scalar.item()
 
-            if (step + 1) % 300 == 0 or (step + 1) == len(train_loader):
+            if (step + 1) % 50 == 0 or (step + 1) == len(train_loader):
                 print(
                     f"Epoch {epoch:2d}/{epochs} | Step {step+1:4d}/{len(train_loader)} | "
                     f"Loss: {loss_scalar.item():.4f} (Avg: {epoch_loss/(step+1):.4f})",
@@ -315,12 +315,20 @@ def train_early_fusion(
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--epochs", type=int, default=40)
-    parser.add_argument("--batch", type=int, default=8)
+    parser.add_argument("--batch", type=int, default=4)
     parser.add_argument("--patience", type=int, default=12)
     args = parser.parse_args()
 
-    train_early_fusion(
-        epochs=args.epochs,
-        batch_size=args.batch,
-        patience=args.patience,
-    )
+    try:
+        train_early_fusion(
+            epochs=args.epochs,
+            batch_size=args.batch,
+            patience=args.patience,
+        )
+    except Exception as e:
+        import traceback
+        err = traceback.format_exc()
+        print(f"\nFATAL TRAINING ERROR:\n{err}", flush=True)
+        with open(ROOT_DIR / "experiments" / "early_fusion_fatal_error.log", "w") as f:
+            f.write(err)
+        sys.exit(1)
