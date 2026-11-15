@@ -6,7 +6,9 @@ datasets/LLVIP/
 datasets/labels/
 datasets/*.txt
 LLVIP/
+# Build & Review Packages
 *.zip
+research_review_bundle/
 *.tar
 *.tar.gz
 *.7z
