@@ -43,9 +43,16 @@ class DualStreamFeatureConcatYOLO26(nn.Module):
         self.neck_and_head = nn.ModuleList([copy.deepcopy(m[i]) for i in range(11, len(m))])
 
         # Ultralytics loss & metadata delegation
-        self.loss = base_yolo.model.loss
-        self.init_criterion = base_yolo.model.init_criterion
+        from ultralytics.cfg import get_cfg
+        base_yolo.model.args = get_cfg()
         self.args = base_yolo.model.args
+        self.init_criterion = base_yolo.model.init_criterion
+        self.criterion = self.init_criterion()
+
+    def loss(self, batch, preds=None):
+        if preds is None:
+            preds = self.forward(batch["img"])
+        return self.criterion(preds, batch)
 
     def extract_features(self, x: torch.Tensor, backbone: nn.ModuleList):
         """Extract multi-scale features P3, P4, P5 from backbone layers 0..10."""

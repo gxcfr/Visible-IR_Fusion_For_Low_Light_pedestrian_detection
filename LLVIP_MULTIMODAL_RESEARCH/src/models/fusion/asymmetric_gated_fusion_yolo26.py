@@ -57,9 +57,16 @@ class AsymmetricGatedFusionYOLO26(nn.Module):
         # Neck and Head layers (layers 11 through 23)
         self.neck_and_head = nn.ModuleList([copy.deepcopy(m[i]) for i in range(11, len(m))])
 
-        self.loss = base_yolo.model.loss
-        self.init_criterion = base_yolo.model.init_criterion
+        from ultralytics.cfg import get_cfg
+        base_yolo.model.args = get_cfg()
         self.args = base_yolo.model.args
+        self.init_criterion = base_yolo.model.init_criterion
+        self.criterion = self.init_criterion()
+
+    def loss(self, batch, preds=None):
+        if preds is None:
+            preds = self.forward(batch["img"])
+        return self.criterion(preds, batch)
 
     def extract_features(self, x: torch.Tensor, backbone: nn.ModuleList):
         p3, p4, p5 = None, None, None
