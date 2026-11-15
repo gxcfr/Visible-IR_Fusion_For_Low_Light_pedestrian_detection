@@ -22,6 +22,9 @@ LLVIP_MULTIMODAL_RESEARCH/weights/
 runs/
 experiments/**/weights/
 experiments/**/runs/
+**/weights/
+**/runs/
+*.cache
 
 # Byte-compiled / Python cache
 __pycache__/

@@ -24,12 +24,12 @@ dataset:
   fixed_seed: 42
 
 training_defaults:
-  epochs: 50
-  batch_size: 4
+  epochs: 40
+  batch_size: 8
   optimizer: "AdamW"
   learning_rate: 0.001
   weight_decay: 0.0005
-  patience: 10
+  patience: 12
   mixed_precision: true
 
 paths:

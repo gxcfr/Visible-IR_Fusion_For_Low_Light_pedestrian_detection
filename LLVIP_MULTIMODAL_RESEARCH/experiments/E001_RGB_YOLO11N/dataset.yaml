@@ -1,0 +1,7 @@
+names:
+  0: person
+nc: 1
+path: C:\VI Fusion for LL-PD\LLVIP_MULTIMODAL_RESEARCH\datasets
+test: C:\VI Fusion for LL-PD\LLVIP_MULTIMODAL_RESEARCH\datasets\test_rgb.txt
+train: C:\VI Fusion for LL-PD\LLVIP_MULTIMODAL_RESEARCH\datasets\train_rgb.txt
+val: C:\VI Fusion for LL-PD\LLVIP_MULTIMODAL_RESEARCH\datasets\val_rgb.txt

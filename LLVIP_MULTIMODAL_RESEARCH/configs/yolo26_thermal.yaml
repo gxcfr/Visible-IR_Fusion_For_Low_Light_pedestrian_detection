@@ -10,7 +10,7 @@ data:
     0: person
   nc: 1
 
-epochs: 50
+epochs: 40
 batch_size: 8
 imgsz: 640
 device: "0"
@@ -18,7 +18,7 @@ workers: 2
 optimizer: "AdamW"
 lr0: 0.001
 weight_decay: 0.0005
-patience: 10
+patience: 12
 amp: true
 seed: 42
 save_dir: "experiments/yolo26_thermal"

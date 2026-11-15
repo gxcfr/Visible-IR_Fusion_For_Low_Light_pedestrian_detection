@@ -45,6 +45,9 @@ weights/
 runs/
 experiments/**/weights/
 experiments/**/runs/
+**/weights/
+**/runs/
+*.cache
 
 # Logs and temporary files
 *.log
