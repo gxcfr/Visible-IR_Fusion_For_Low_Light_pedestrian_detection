@@ -110,6 +110,25 @@ Every experiment receives a unique deterministic identifier:
 - **Precision**: 0.8939 | **Recall**: 0.7191 | **F1**: 0.7970
 - **Latency**: 15.80 ms (63.3 FPS)
 
+### [Execution] Milestone 5 - E006_FEATURE_FUSION_CONCAT_YOLO26N
+- **Date**: 2026-11-15
+- **Status**: COMPLETED
+- **Strategy**: Dual-Stream Intermediate Feature Concatenation at P3, P4, P5 with 1x1 conv channel projection.
+- **Stopping Dynamics**: Stopped at Epoch 17 (patience=12 triggered after peak fitness at Epoch 5).
+- **Validation Metrics (1,803 pairs)**:
+  - Precision: **93.48%**
+  - Recall: **86.32%**
+  - F1-Score: **89.76%**
+  - mAP50: **93.58%**
+  - mAP50-95: **56.62%**
+- **Hardware Latency**:
+  - Model Latency: **14.73 ms**
+  - Throughput: **67.89 FPS**
+  - Parameters: **4,135,384 (~4.14M)**
+- **Findings**: Intermediate feature concatenation completely eliminates the modality contamination observed in early fusion, surging from **71.53% to 93.58% $mAP_{50}$** (+22.05% improvement) while retaining 67.9 FPS real-time speed.
+
+---
+
 ### [Execution] Milestone 5 - E005_EARLY_FUSION_4CH_YOLO26N
 - **Date**: 2026-11-15
 - **Status**: COMPLETED
