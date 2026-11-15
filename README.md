@@ -1,6 +1,6 @@
 # Reliability-Aware Asymmetric Visible-Infrared Fusion for Low-Light Pedestrian Detection
 
-### Research Status: Phase 2 Audit Closure & Statistical Reconciliation Completed
+### Research Status: Final Audit Closure, Scene-Conditioned Analysis, and Protocol Design Completed (E001–E007 Reconciled; E008 Specified; Test Partition Strictly Sealed)
 
 - **Core Research Objective**: *"Investigate whether reliability-aware asymmetric visible-infrared fusion improves pedestrian detection under challenging illumination conditions relative to unimodal and conventional fusion baselines."*
 - **Dataset**: LLVIP (`C:\LLVIP\LLVIP`) — 15,488 verified pairs (100% paired, single class `person`).
@@ -65,7 +65,9 @@ Measured on NVIDIA GeForce RTX 4060 Laptop GPU (50 warmup + 200 measured iterati
 5. **Computational Cost Tradeoff**: E007 incurs greater computational complexity (4.97M parameters, 17.94 ms end-to-end) than unimodal thermal (2.37M parameters, 12.31 ms end-to-end), while running well above the real-time 30 FPS threshold (55.7 FPS).
 6. **Absence of Universal Superiority**: **The current experiments do not establish that adaptive fusion is universally superior to thermal-only on this dataset**. Under typical nighttime LLVIP conditions, adding visible features offers marginal overall numerical benefit because thermal contrast is already near saturation.
 7. **Empirical Value of Fusion in Degraded Conditions**: In complex localized scenarios (e.g., Scene 25 with artificial headlight glare and deep shadows), unimodal thermal misses shadowed individuals and visible misses thermal contrast targets; multi-modal feature fusion successfully recovers **both** pedestrians.
-8. **Need for Multi-Seed Verification**: Additional random training seeds, variance testing, and daylight/fog benchmark ablations are needed before making strong statistical significance claims regarding fractional percentage differences ($<0.5\%$).
+8. **Scene-Conditioned Gate Dynamics & Simpson's Paradox**: As proved in `SCENE_CONDITIONED_GATE_ANALYSIS.md`, gate activations correlate positively with visible brightness within three of four scenes (+0.09 to +0.49), but invert to -0.32 under naive pooling due to baseline scene luminance shifts. True within-scene centered correlation is +0.116. Furthermore, accounting for sequence frame autocorrelation via 50-frame block bootstrap widens standard error by over 3x (SE = 0.075 vs naive 0.024), demonstrating that naive i.i.d. p-values are heavily anticonservative.
+9. **Detection Head Pruning**: Fusion models E005-E007 carried 80-class COCO heads (4.97M params), whereas baselines E001-E003 used 1-class heads (2.37M params). A 1-class head variant (4.90M params) has been specified as **E008** in `HEAD_CLASS_COUNT_AUDIT.md`.
+10. **Controlled Next-Phase Protocols**: Comprehensive protocols for 6-configuration ablations, 5-level synthetic degradation stress-testing, and 5-seed repeatability have been formalized in `research/next_phase/` before launching any new training runs.
 
 ---
 
@@ -78,7 +80,7 @@ Measured on NVIDIA GeForce RTX 4060 Laptop GPU (50 warmup + 200 measured iterati
 - **Asymmetric Residual Formulation**:
   $$F_{\text{fused}} = F_T + G_V \odot P(F_V)$$
   where thermal features $F_T$ pass through an unmodulated additive identity shortcut, while visible features $P(F_V)$ are adaptively modulated by dynamic gate map $G_V \in (0, 1)$.
-- **Gate Semantics**: Gate values represent unitless learned deep feature modulation scalars, **not** calibrated physical sensor reliability probabilities. Inside pedestrian heat signatures, the network attenuates visible features ($G_V \approx 0.367$) relative to background ($G_V \approx 0.518$) to prioritize crisp thermal silhouettes.
+- **Gate Semantics**: Gate values represent unitless learned deep feature modulation scalars, **not** calibrated physical sensor reliability probabilities. Inside pedestrian heat signatures, the network attenuates visible features ($G_V \approx 0.505$) relative to background ($G_V \approx 0.513$) to prioritize crisp thermal silhouettes while preserving background context.
 
 ---
 
@@ -91,3 +93,14 @@ Measured on NVIDIA GeForce RTX 4060 Laptop GPU (50 warmup + 200 measured iterati
 - [CORRECTED_QUALITATIVE_ANALYSIS.md](file:///C:/VI%20Fusion%20for%20LL-PD/research/audit_phase/final_reconciliation/CORRECTED_QUALITATIVE_ANALYSIS.md) — Ground-truth matched evaluation across Scenes 02, 05, 07, and 25.
 - [PARAMETER_COUNT_AUDIT.json](file:///C:/VI%20Fusion%20for%20LL-PD/research/audit_phase/final_reconciliation/PARAMETER_COUNT_AUDIT.json) — Parameter count accounting audit (4.97M vs 4.90M).
 - [UNIFIED_EVALUATOR_SOURCE.md](file:///C:/VI%20Fusion%20for%20LL-PD/research/audit_phase/final_reconciliation/UNIFIED_EVALUATOR_SOURCE.md) — Complete evaluation source code and package versions.
+
+---
+
+## 🚀 Next-Phase Protocols and Epistemological Closure (`research/next_phase/`)
+
+- [FINAL_AUDIT_CLOSURE.md](file:///C:/VI%20Fusion%20for%20LL-PD/research/next_phase/FINAL_AUDIT_CLOSURE.md) — Final audit closure, epistemological corrections, and research roadmap.
+- [SCENE_CONDITIONED_GATE_ANALYSIS.md](file:///C:/VI%20Fusion%20for%20LL-PD/research/next_phase/SCENE_CONDITIONED_GATE_ANALYSIS.md) — Scene-conditioned correlation, Simpson's paradox, and moving block bootstrap.
+- [HEAD_CLASS_COUNT_AUDIT.md](file:///C:/VI%20Fusion%20for%20LL-PD/research/next_phase/HEAD_CLASS_COUNT_AUDIT.md) — Detection head class count audit ($nc=80$ vs $nc=1$) and E008 specification.
+- [ABLATION_PROTOCOL.md](file:///C:/VI%20Fusion%20for%20LL-PD/research/next_phase/ABLATION_PROTOCOL.md) — 6-configuration controlled ablation design protocol.
+- [ROBUSTNESS_PROTOCOL.md](file:///C:/VI%20Fusion%20for%20LL-PD/research/next_phase/ROBUSTNESS_PROTOCOL.md) — 5-level synthetic degradation stress-testing protocol.
+- [MULTI_SEED_PROTOCOL.md](file:///C:/VI%20Fusion%20for%20LL-PD/research/next_phase/MULTI_SEED_PROTOCOL.md) — 5-seed repeatability and statistical variance protocol.

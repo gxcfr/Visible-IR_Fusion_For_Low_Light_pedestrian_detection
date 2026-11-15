@@ -1,0 +1,258 @@
+{
+    "analysis_type": "Scene-Conditioned Gate Correlation and Cluster Uncertainty Analysis",
+    "dataset": "LLVIP Validation Split (1,803 image pairs across 4 camera scenes)",
+    "per_scene_breakdown": {
+        "scene_02": {
+            "scene_id": 2,
+            "frame_count": 500,
+            "scene_means": {
+                "rgb_mean_brightness": 55.84,
+                "rgb_contrast_std": 44.77,
+                "th_contrast_std": 43.03,
+                "p3_gate_mean": 0.4937,
+                "p3_gate_std": 0.0071,
+                "p3_fg_gate_mean": 0.3586,
+                "p3_bg_gate_mean": 0.4987
+            },
+            "correlations": {
+                "visible_brightness": {
+                    "pearson_r": 0.3064,
+                    "pearson_p": 2.507130827031299e-12,
+                    "pearson_ci95": [
+                        0.2247,
+                        0.3838
+                    ],
+                    "spearman_rho": 0.3161,
+                    "spearman_p": 4.552387167932954e-13
+                },
+                "visible_contrast": {
+                    "pearson_r": 0.192,
+                    "pearson_p": 1.5479902401808052e-05,
+                    "pearson_ci95": [
+                        0.106,
+                        0.275
+                    ],
+                    "spearman_rho": 0.201,
+                    "spearman_p": 5.9192260043844385e-06
+                },
+                "thermal_contrast": {
+                    "pearson_r": -0.5474,
+                    "pearson_p": 1.9999137430436454e-40,
+                    "pearson_ci95": [
+                        -0.606,
+                        -0.4829
+                    ],
+                    "spearman_rho": -0.5328,
+                    "spearman_p": 5.258315950504355e-38
+                }
+            }
+        },
+        "scene_05": {
+            "scene_id": 5,
+            "frame_count": 428,
+            "scene_means": {
+                "rgb_mean_brightness": 37.38,
+                "rgb_contrast_std": 21.18,
+                "th_contrast_std": 51.97,
+                "p3_gate_mean": 0.5482,
+                "p3_gate_std": 0.0087,
+                "p3_fg_gate_mean": 0.3642,
+                "p3_bg_gate_mean": 0.5585
+            },
+            "correlations": {
+                "visible_brightness": {
+                    "pearson_r": -0.2654,
+                    "pearson_p": 2.4839571612226876e-08,
+                    "pearson_ci95": [
+                        -0.3513,
+                        -0.175
+                    ],
+                    "spearman_rho": -0.2091,
+                    "spearman_p": 1.2889664204191467e-05
+                },
+                "visible_contrast": {
+                    "pearson_r": -0.5266,
+                    "pearson_p": 6.589599538567561e-32,
+                    "pearson_ci95": [
+                        -0.5919,
+                        -0.4545
+                    ],
+                    "spearman_rho": -0.5482,
+                    "spearman_p": 6.044827672429542e-35
+                },
+                "thermal_contrast": {
+                    "pearson_r": -0.5361,
+                    "pearson_p": 3.264528155916309e-33,
+                    "pearson_ci95": [
+                        -0.6004,
+                        -0.4649
+                    ],
+                    "spearman_rho": -0.4537,
+                    "spearman_p": 4.029796027779239e-23
+                }
+            }
+        },
+        "scene_07": {
+            "scene_id": 7,
+            "frame_count": 452,
+            "scene_means": {
+                "rgb_mean_brightness": 62.11,
+                "rgb_contrast_std": 46.45,
+                "th_contrast_std": 46.18,
+                "p3_gate_mean": 0.5104,
+                "p3_gate_std": 0.0077,
+                "p3_fg_gate_mean": 0.3718,
+                "p3_bg_gate_mean": 0.5144
+            },
+            "correlations": {
+                "visible_brightness": {
+                    "pearson_r": 0.4921,
+                    "pearson_p": 6.155171135819851e-29,
+                    "pearson_ci95": [
+                        0.4188,
+                        0.5589
+                    ],
+                    "spearman_rho": 0.5802,
+                    "spearman_p": 5.039482582243545e-42
+                },
+                "visible_contrast": {
+                    "pearson_r": -0.3243,
+                    "pearson_p": 1.572304703452854e-12,
+                    "pearson_ci95": [
+                        -0.4045,
+                        -0.2392
+                    ],
+                    "spearman_rho": -0.4001,
+                    "spearman_p": 8.271968951740256e-19
+                },
+                "thermal_contrast": {
+                    "pearson_r": 0.3611,
+                    "pearson_p": 2.3031465933807638e-15,
+                    "pearson_ci95": [
+                        0.2781,
+                        0.4387
+                    ],
+                    "spearman_rho": 0.37,
+                    "spearman_p": 4.0857334094791197e-16
+                }
+            }
+        },
+        "scene_25": {
+            "scene_id": 25,
+            "frame_count": 423,
+            "scene_means": {
+                "rgb_mean_brightness": 87.49,
+                "rgb_contrast_std": 56.56,
+                "th_contrast_std": 49.17,
+                "p3_gate_mean": 0.4994,
+                "p3_gate_std": 0.0176,
+                "p3_fg_gate_mean": 0.3764,
+                "p3_bg_gate_mean": 0.5029
+            },
+            "correlations": {
+                "visible_brightness": {
+                    "pearson_r": 0.0898,
+                    "pearson_p": 0.06507282429193445,
+                    "pearson_ci95": [
+                        -0.0056,
+                        0.1836
+                    ],
+                    "spearman_rho": 0.1509,
+                    "spearman_p": 0.001858091296072124
+                },
+                "visible_contrast": {
+                    "pearson_r": -0.017,
+                    "pearson_p": 0.7268074534625532,
+                    "pearson_ci95": [
+                        -0.1122,
+                        0.0784
+                    ],
+                    "spearman_rho": -0.0901,
+                    "spearman_p": 0.06404710981314184
+                },
+                "thermal_contrast": {
+                    "pearson_r": 0.1371,
+                    "pearson_p": 0.004747028746284811,
+                    "pearson_ci95": [
+                        0.0423,
+                        0.2294
+                    ],
+                    "spearman_rho": -0.0026,
+                    "spearman_p": 0.9582696190718749
+                }
+            }
+        }
+    },
+    "within_scene_centered_correlations": {
+        "interpretation": "Evaluates correlation after subtracting each scene's mean, removing scene-level baseline shifts and cross-scene confounding (Simpson's paradox).",
+        "visible_brightness": {
+            "centered_pearson_r": 0.1162,
+            "centered_pearson_p": 7.510444899105923e-07,
+            "centered_spearman_rho": 0.2007,
+            "centered_spearman_p": 7.786553635615678e-18
+        },
+        "visible_contrast": {
+            "centered_pearson_r": -0.0607,
+            "centered_pearson_p": 0.009958700348676295,
+            "centered_spearman_rho": -0.0773,
+            "centered_spearman_p": 0.0010151619665981313
+        },
+        "thermal_contrast": {
+            "centered_pearson_r": -0.1055,
+            "centered_pearson_p": 7.132967532639577e-06,
+            "centered_spearman_rho": -0.1688,
+            "centered_spearman_p": 5.487519072206585e-13
+        }
+    },
+    "cross_scene_direction_comparison": {
+        "visible_brightness": {
+            "scene_02": 0.3064,
+            "scene_05": -0.2654,
+            "scene_07": 0.4921,
+            "scene_25": 0.0898,
+            "pooled_r": -0.3216,
+            "centered_r": 0.1162
+        },
+        "visible_contrast": {
+            "scene_02": 0.192,
+            "scene_05": -0.5266,
+            "scene_07": -0.3243,
+            "scene_25": -0.017,
+            "pooled_r": -0.5368,
+            "centered_r": -0.0607
+        },
+        "thermal_contrast": {
+            "scene_02": -0.5474,
+            "scene_05": -0.5361,
+            "scene_07": 0.3611,
+            "scene_25": 0.1371,
+            "pooled_r": 0.4719,
+            "centered_r": -0.1055
+        }
+    },
+    "block_bootstrap_uncertainty_analysis": {
+        "block_size_frames": 50,
+        "total_blocks": 38,
+        "bootstrap_iterations": 1000,
+        "block_bootstrap_ci95": {
+            "p3_vs_visible_brightness": [
+                -0.4552,
+                -0.1598
+            ],
+            "p3_vs_visible_contrast": [
+                -0.6582,
+                -0.361
+            ],
+            "p3_vs_thermal_contrast": [
+                0.3409,
+                0.5756
+            ]
+        },
+        "standard_error_comparison": {
+            "naive_iid_se": 0.0236,
+            "block_bootstrap_se_brightness": 0.0746,
+            "block_bootstrap_se_visible_contrast": 0.0758,
+            "block_bootstrap_se_thermal_contrast": 0.0611
+        }
+    }
+}

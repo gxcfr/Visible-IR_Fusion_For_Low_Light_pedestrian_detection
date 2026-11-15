@@ -195,8 +195,10 @@ Based on the harmonized evaluation of all 1,803 validation pairs, the empirical 
 4. **Relative Gains over E006**: E007 improves detection recall relative to E006 (**90.25%** vs 88.50%) and increases $mAP_{50}$ (**93.70%** vs 93.24%).
 5. **Computational Cost Tradeoff**: E007 incurs greater computational complexity (4.97M parameters, 17.94 ms end-to-end) than unimodal thermal (2.37M parameters, 12.31 ms end-to-end), while running well above the real-time 30 FPS threshold (55.7 FPS).
 6. **Absence of Universal Superiority**: **The current experiments do not establish that adaptive fusion is universally superior to thermal-only on this dataset**. Under typical nighttime LLVIP conditions, adding visible features offers marginal overall numerical benefit because thermal contrast is already near saturation.
-7. **Empirical Value of Fusion in Degraded Conditions**: As proven in Scene 25, multi-modal feature fusion provides indispensable safety resilience in localized failure modes (e.g. thermal washouts, glare, and shadow) where individual sensors fail.
-8. **Need for Multi-Seed Verification**: Additional random training seeds, variance testing, and daylight/fog benchmark ablations are necessary before making strong statistical significance claims regarding fractional percentage differences ($<0.5\%$).
+7. **Empirical Value of Fusion in Degraded Conditions**: In complex localized scenarios (e.g., Scene 25 with artificial vehicle headlight glare and deep shadows), unimodal thermal misses shadowed individuals and visible misses thermal contrast targets; multi-modal feature fusion successfully recovers **both** pedestrians. This demonstrates localized complementarity rather than global dominance.
+8. **Scene-Conditioned Gate Dynamics and Simpson's Paradox**: As established in the next-phase audit (`SCENE_CONDITIONED_GATE_ANALYSIS.md`), gate activations correlate positively with visible brightness within three of four individual camera scenes (+0.09 to +0.49), but invert to -0.32 under naive pooling due to baseline scene luminance shifts. True within-scene centered correlation is +0.116. Furthermore, accounting for sequence frame autocorrelation via 50-frame block bootstrap widens standard error by over 3x (SE = 0.075 vs naive 0.024), demonstrating that naive i.i.d. p-values are heavily anticonservative.
+9. **Detection Head Class Realignment**: Baselines E001-E003 utilized single-class heads ($nc=1$, 2.37M params), whereas fusion models E005-E007 retained 80-class heads (4.97M params), allocating optimization loss capacity to suppressing 79 negative COCO classes. While unified person evaluation was mathematically fair ($pred\_cls == 0$ filtering), future benchmarking will standardize on the single-class head architecture (E008, 4.90M params).
+10. **Need for Multi-Seed Verification and Stress-Testing**: Standardized protocols for 6-configuration ablations, 5-level synthetic degradation stress-testing, and 5-seed repeatability have been formalized in `research/next_phase/` before launching any new training runs.
 
 ---
 
@@ -222,3 +224,11 @@ Based on the harmonized evaluation of all 1,803 validation pairs, the empirical 
 - [CORRECTED_QUALITATIVE_ANALYSIS.md](file:///C:/VI%20Fusion%20for%20LL-PD/research/audit_phase/final_reconciliation/CORRECTED_QUALITATIVE_ANALYSIS.md) — Rigorous truth-matching evaluation for Scenes 02, 05, 07, and 25.
 - [PARAMETER_COUNT_AUDIT.json](file:///C:/VI%20Fusion%20for%20LL-PD/research/audit_phase/final_reconciliation/PARAMETER_COUNT_AUDIT.json) — Code-level parameter count audit and reconciliation.
 - [UNIFIED_EVALUATOR_SOURCE.md](file:///C:/VI%20Fusion%20for%20LL-PD/research/audit_phase/final_reconciliation/UNIFIED_EVALUATOR_SOURCE.md) — Unabridged evaluation source code and package versions.
+
+### Next-Phase Deliverables (`research/next_phase/`):
+- [FINAL_AUDIT_CLOSURE.md](file:///C:/VI%20Fusion%20for%20LL-PD/research/next_phase/FINAL_AUDIT_CLOSURE.md) — Comprehensive closure report and future roadmap.
+- [SCENE_CONDITIONED_GATE_ANALYSIS.md](file:///C:/VI%20Fusion%20for%20LL-PD/research/next_phase/SCENE_CONDITIONED_GATE_ANALYSIS.md) — Scene-stratified correlation, Simpson's paradox, and block bootstrap.
+- [HEAD_CLASS_COUNT_AUDIT.md](file:///C:/VI%20Fusion%20for%20LL-PD/research/next_phase/HEAD_CLASS_COUNT_AUDIT.md) — 80-class vs 1-class head audit and E008 specification.
+- [ABLATION_PROTOCOL.md](file:///C:/VI%20Fusion%20for%20LL-PD/research/next_phase/ABLATION_PROTOCOL.md) — 6-configuration controlled ablation design.
+- [ROBUSTNESS_PROTOCOL.md](file:///C:/VI%20Fusion%20for%20LL-PD/research/next_phase/ROBUSTNESS_PROTOCOL.md) — 5-level synthetic degradation stress-testing protocol.
+- [MULTI_SEED_PROTOCOL.md](file:///C:/VI%20Fusion%20for%20LL-PD/research/next_phase/MULTI_SEED_PROTOCOL.md) — 5-seed repeatability and statistical variance protocol.
