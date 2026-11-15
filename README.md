@@ -1,6 +1,6 @@
 # Reliability-Aware Asymmetric Visible-Infrared Fusion for Low-Light Pedestrian Detection
 
-### Research Status: Phase D / Stage 4 Completed (Partial Robustness Stress-Testing Completed: 25 of 40 Conditions Finished across 5 Complete Categories; Dead-Pixels Incomplete; Simultaneous Suites Deferred)
+### Research Status: Stage 7 Completed (Model Selection Frozen & Checkpoints Fingerprinted; Official Test Partition Sealed; Awaiting Approval to Unseal for Stage 8)
 
 - **Core Research Objective**: *"Investigate whether reliability-aware asymmetric visible-infrared fusion improves pedestrian detection under challenging illumination conditions relative to unimodal and conventional fusion baselines."*
 - **Execution Mandate**: **Zero additional training runs.** All evaluations operate strictly on frozen checkpoints (E001–E007). Proposed models E008/E009 and multi-seed training runs are formally **DEFERRED**.
@@ -120,10 +120,10 @@ Measured on NVIDIA GeForce RTX 4060 Laptop GPU (50 warmup + 200 measured iterati
 - [02_GATE_ANALYSIS.md](file:///C:/VI%20Fusion%20for%20LL-PD/research/final_phase/02_GATE_ANALYSIS.md) — Stage 2 scene-conditioned correlation, Simpson's paradox, and block-bootstrap verification.
 - [03_INFERENCE_ABLATIONS.md](file:///C:/VI%20Fusion%20for%20LL-PD/research/final_phase/03_INFERENCE_ABLATIONS.md) — Stage 3 inference-only gate interventions (IA001–IA004), co-adaptation collapse, and noise trade-offs.
 - [04_ROBUSTNESS_ANALYSIS.md](file:///C:/VI%20Fusion%20for%20LL-PD/research/final_phase/04_ROBUSTNESS_ANALYSIS.md) — Stage 4 partial robustness study across 25 completed conditions, degradation slopes, and gate adaptation.
-- `05_VALIDATION_ANALYSIS.md` — Stage 5 consolidated validation & failure analysis *(Scheduled Next)*.
-- `06_COMPUTATIONAL_ANALYSIS.md` — Stage 6 computational latency and throughput report *(Scheduled)*.
-- `07_MODEL_FREEZE_REPORT.md` — Stage 7 model freeze protocol *(Hold for user approval before test partition)*.
-- `08_FINAL_TEST_RESULTS.md` — Stage 8 held-out official test set evaluation *(Blocked until approval)*.
+- [05_VALIDATION_ANALYSIS.md](file:///C:/VI%20Fusion%20for%20LL-PD/research/final_phase/05_VALIDATION_ANALYSIS.md) — Stage 5 consolidated validation & failure analysis across Scenes 02, 05, 07, 25, error taxonomy, and visual panels.
+- [06_COMPUTATIONAL_ANALYSIS.md](file:///C:/VI%20Fusion%20for%20LL-PD/research/final_phase/06_COMPUTATIONAL_ANALYSIS.md) — Stage 6 computational efficiency, FLOPs, latency, and memory profiling on NVIDIA RTX 4060 GPU.
+- [07_MODEL_FREEZE_REPORT.md](file:///C:/VI%20Fusion%20for%20LL-PD/research/final_phase/07_MODEL_FREEZE_REPORT.md) — Stage 7 model selection freeze, cryptographic SHA256 checksums, and sealed test protocol *(GATEWAY HOLD)*.
+- `08_FINAL_TEST_RESULTS.md` — Stage 8 held-out official test set evaluation *(Blocked pending researcher approval)*.
 
 ---
 

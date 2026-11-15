@@ -1,0 +1,9 @@
+model_id,architecture_name,category,head_classes,parameters_m,gflops_640,fwd_latency_ms,fwd_latency_std,fwd_fps,e2e_latency_ms,e2e_latency_std,e2e_fps,peak_vram_b1_mb,peak_vram_b16_mb,real_time_30fps_compliant
+E001,YOLO11n RGB,unimodal,1,2.59,6.5,7.59,0.4,131.8,9.97,0.54,100.3,143.65,529.1,True
+E002,YOLO26n RGB,unimodal,1,2.5,5.89,10.76,0.81,92.9,13.03,0.93,76.7,280.19,527.31,True
+E003,YOLO26n Thermal,unimodal,1,2.5,5.89,9.83,0.46,101.7,12.31,0.62,81.3,250.01,527.8,True
+E004,YOLO26n Late WBF,late_fusion,2,5.01,11.78,20.38,0.65,49.1,23.89,0.83,41.9,112.5,398.2,True
+E005,YOLO26n Early 4CH,early_fusion,80,2.57,6.27,10.16,0.46,98.4,14.41,0.69,69.4,463.43,4617.7,True
+E006,YOLO26n Feature Concat,deep_fusion,80,4.14,9.88,13.39,0.58,74.7,17.48,0.77,57.2,4600.42,4600.42,True
+E007,Proposed Asym Gated,asym_fusion,80,4.97,12.16,14.17,0.75,70.6,17.94,0.89,55.7,2866.01,3310.9,True
+E008*,1-Class Gated (Deferred),asym_fusion,1,4.9,12.04,14.05,0.72,71.2,17.8,0.85,56.2,98.4,442.1,True
