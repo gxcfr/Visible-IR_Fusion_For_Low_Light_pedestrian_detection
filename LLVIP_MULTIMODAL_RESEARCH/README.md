@@ -142,7 +142,8 @@
 | **E001** | YOLO11n | RGB-only (Historical) | **0.8057** | **0.4131** | **0.7222** | **0.9124** | **0.8062** | **10.69** | **93.55** | 2,590,035 | 1,126 MB | **COMPLETED** |
 | **E002** | YOLO26n | RGB-only Baseline | **0.7934** | **0.4047** | **0.7191** | **0.8939** | **0.7970** | **15.80** | **63.28** | 2,504,190 | 1,251 MB | **COMPLETED** |
 | **E003** | YOLO26n | Thermal-only Baseline | **0.9449** | **0.5679** | **0.8790** | **0.9413** | **0.9091** | **10.80** | **92.60** | 2,504,190 | 1,247 MB | **COMPLETED** |
-| **E004** | YOLO26n | Late Fusion (WBF) | *Pending* | *Pending* | *Pending* | *Pending* | *Pending* | *Pending* | *Pending* | 5,008,380 | — | *Queued* |
+| **E004** | YOLO26n | Late Fusion (WBF) | **0.9135** | **0.5249** | **0.8545** | **0.8815** | **0.8678** | **20.38** | **49.07** | 5,008,380 | 1,840 MB | **COMPLETED** |
+| **E005** | YOLO26n | Early Fusion (4-Channel) | *Pending* | *Pending* | *Pending* | *Pending* | *Pending* | *Pending* | *Pending* | ~2.50M | — | *Queued* |
 | **E005** | YOLO26n | Early Fusion (4-Channel) | *Pending* | *Pending* | *Pending* | *Pending* | *Pending* | *Pending* | *Pending* | ~2.57M | — | *Queued* |
 | **E006** | YOLO26n | Feature Concatenation | *Pending* | *Pending* | *Pending* | *Pending* | *Pending* | *Pending* | *Pending* | ~3.8M | — | *Queued* |
 | **E007** | Proposed | Asymmetric Gated Fusion | *Pending* | *Pending* | *Pending* | *Pending* | *Pending* | *Pending* | *Pending* | ~3.9M | — | *Queued* |
@@ -217,7 +218,8 @@
 - [x] **Milestone 4 (E001)**: Train and benchmark historical baseline `E001_RGB_YOLO11N`
 - [x] **Milestone 4 (E002)**: Train and benchmark primary baseline `E002_RGB_YOLO26N` (YOLO26n RGB-only)
 - [x] **Milestone 4 (E003)**: Train and benchmark primary baseline `E003_THERMAL_YOLO26N` (YOLO26n Thermal-only)
-- [ ] **Milestone 5 (E004)**: Benchmark YOLO26n Late Fusion via Weighted Boxes Fusion (WBF) [IN PROGRESS]
+- [x] **Milestone 5 (E004)**: Benchmark YOLO26n Late Fusion via Weighted Boxes Fusion (WBF)
+- [ ] **Milestone 5 (E005)**: Implement & train 4-channel Early Fusion baseline [IN PROGRESS]
 - [ ] **Milestone 5 (E005)**: Implement & train 4-channel Early Fusion baseline
 - [ ] **Milestone 5 (E006)**: Implement & train dual-stream Feature Concatenation baseline
 - [ ] **Milestone 6 (E007)**: Implement & train proposed Thermal-Primary Asymmetric Reliability-Aware Gated Fusion

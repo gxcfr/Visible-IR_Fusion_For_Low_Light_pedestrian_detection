@@ -110,7 +110,23 @@ Every experiment receives a unique deterministic identifier:
 - **Precision**: 0.8939 | **Recall**: 0.7191 | **F1**: 0.7970
 - **Latency**: 15.80 ms (63.3 FPS)
 
-### [Execution] Milestone 4 - E003_THERMAL_YOLO26N
+### [Execution] Milestone 5 - E004_LATE_FUSION_WBF_YOLO26N
+- **Date**: 2026-11-15
+- **Status**: COMPLETED
+- **Strategy**: Late Fusion via Weighted Boxes Fusion (WBF)
+- **Input Models**: `experiments/E002_RGB_YOLO26N/weights/best.pt` & `experiments/E003_THERMAL_YOLO26N/weights/best.pt`
+- **WBF Hyperparameters**: $w_{thermal} = 0.7$, $w_{rgb} = 0.3$, $\text{IoU}_{thr} = 0.55$, $\text{skip\_box\_thr} = 0.001$.
+- **Validation Metrics (1,803 pairs)**:
+  - Precision: **88.15%**
+  - Recall: **85.45%**
+  - F1-Score: **86.78%**
+  - mAP50: **91.35%**
+  - mAP50-95: **52.49%**
+- **Measured Latency (Batch 1, GPU sync)**:
+  - Combined Dual-Stream Latency: **20.38 ms** (std: 2.40 ms)
+  - Throughput: **49.07 FPS**
+  - Total Parameters: **5,008,380 (~5.01M)**
+- **Artifacts**: Metrics saved in `experiments/E004_LATE_FUSION_WBF_YOLO26N/metrics.json`.
 - **Date**: 2026-11-15
 - **Status**: COMPLETED
 - **Architecture**: YOLO26n

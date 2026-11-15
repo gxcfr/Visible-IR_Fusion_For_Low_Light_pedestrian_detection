@@ -1,0 +1,32 @@
+{
+    "experiment_id": "E004_LATE_FUSION_WBF_YOLO26N",
+    "strategy": "late_fusion_wbf",
+    "models": {
+        "rgb": "LLVIP_MULTIMODAL_RESEARCH/experiments/E002_RGB_YOLO26N/weights/best.pt",
+        "thermal": "LLVIP_MULTIMODAL_RESEARCH/experiments/E003_THERMAL_YOLO26N/weights/best.pt"
+    },
+    "wbf_parameters": {
+        "w_rgb": 0.3,
+        "w_thermal": 0.7,
+        "iou_thr": 0.55,
+        "skip_box_thr": 0.001
+    },
+    "status": "COMPLETED",
+    "validation_metrics": {
+        "precision": 0.8815,
+        "recall": 0.8545,
+        "f1_score": 0.8678,
+        "mAP50": 0.9135,
+        "mAP50-95": 0.5249
+    },
+    "latency_metrics": {
+        "device": "cuda:0",
+        "input_resolution": "640x640",
+        "batch_size": 1,
+        "dual_stream_parameters": 5008380,
+        "combined_latency_mean_ms": 20.38,
+        "combined_latency_std_ms": 2.4,
+        "fps": 49.07,
+        "wbf_overhead_ms": 0.8
+    }
+}

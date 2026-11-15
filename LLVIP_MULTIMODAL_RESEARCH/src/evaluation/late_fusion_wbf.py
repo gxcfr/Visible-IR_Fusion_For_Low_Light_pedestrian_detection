@@ -127,13 +127,14 @@ def evaluate_detections(pred_boxes_list: List[np.ndarray], gt_boxes_list: List[n
     pred_cls_arr = np.array(pred_cls_all)
     target_cls_arr = np.array(target_cls_all)
 
-    tp, fp, p, r, f1, ap, unique_classes = ap_per_class(
+    results = ap_per_class(
         tp=tp_cat,
         conf=conf_arr,
         pred_cls=pred_cls_arr,
         target_cls=target_cls_arr,
         plot=False,
     )
+    tp, fp, p, r, f1, ap = results[:6]
 
     if len(ap) > 0:
         map50 = float(ap[:, 0].mean())
@@ -166,24 +167,24 @@ def run_late_fusion_experiment(
     exp_dir = ROOT_DIR / "experiments" / exp_id
     exp_dir.mkdir(parents=True, exist_ok=True)
 
-    print("=" * 80)
-    print(f"STARTING EXPERIMENT: {exp_id}")
-    print(f"RGB Model:     {rgb_weights}")
-    print(f"Thermal Model: {thermal_weights}")
-    print(f"WBF Weights:   RGB={w_rgb}, Thermal={w_thermal}")
-    print(f"WBF IoU Thr:   {iou_thr} | Skip Box Thr: {skip_box_thr}")
-    print("=" * 80)
+    print("=" * 80, flush=True)
+    print(f"STARTING EXPERIMENT: {exp_id}", flush=True)
+    print(f"RGB Model:     {rgb_weights}", flush=True)
+    print(f"Thermal Model: {thermal_weights}", flush=True)
+    print(f"WBF Weights:   RGB={w_rgb}, Thermal={w_thermal}", flush=True)
+    print(f"WBF IoU Thr:   {iou_thr} | Skip Box Thr: {skip_box_thr}", flush=True)
+    print("=" * 80, flush=True)
 
     rgb_model = YOLO(str(rgb_weights))
     thermal_model = YOLO(str(thermal_weights))
 
     rgb_paths, th_paths, label_paths = load_val_pair_paths()
-    print(f"Loaded {len(rgb_paths)} validation pairs.")
+    print(f"Loaded {len(rgb_paths)} validation pairs.", flush=True)
 
     gt_boxes_all = []
     fused_preds_all = []
 
-    print("Running paired inference and Weighted Boxes Fusion on validation split...")
+    print("Running paired inference and Weighted Boxes Fusion on validation split...", flush=True)
     t0 = time.time()
 
     for idx, (rgb_p, th_p, lbl_p) in enumerate(zip(rgb_paths, th_paths, label_paths)):
@@ -233,19 +234,21 @@ def run_late_fusion_experiment(
         fused_preds_all.append(pred_arr)
 
         if (idx + 1) % 400 == 0 or (idx + 1) == len(rgb_paths):
-            print(f"Processed {idx + 1} / {len(rgb_paths)} validation pairs...")
+            print(f"Processed {idx + 1} / {len(rgb_paths)} validation pairs...", flush=True)
 
     eval_duration = time.time() - t0
-    print(f"Inference and WBF completed in {eval_duration:.2f}s ({len(rgb_paths) / eval_duration:.1f} pairs/sec).")
+    print(f"Inference and WBF completed in {eval_duration:.2f}s ({len(rgb_paths) / eval_duration:.1f} pairs/sec).", flush=True)
 
     # Evaluate Detection Metrics
     metrics = evaluate_detections(fused_preds_all, gt_boxes_all)
-    print("\nWBF Validation Evaluation Results:")
+    print("\nWBF Validation Evaluation Results:", flush=True)
     for k, v in metrics.items():
-        print(f"  {k}: {v}")
+        print(f"  {k}: {v}", flush=True)
 
     # Latency Benchmark: Synchronized batch-1 measurement
-    print("\nRunning hardware latency benchmark for Dual-Stream + WBF...")
+    print("\nRunning hardware latency benchmark for Dual-Stream + WBF...", flush=True)
+    rgb_model.model.to("cuda:0").eval()
+    thermal_model.model.to("cuda:0").eval()
     torch.cuda.empty_cache()
     dummy_rgb = torch.zeros((1, 3, 640, 640), device="cuda:0")
     dummy_th = torch.zeros((1, 3, 640, 640), device="cuda:0")
