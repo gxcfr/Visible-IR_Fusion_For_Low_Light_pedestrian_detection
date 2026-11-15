@@ -160,6 +160,11 @@ def train_fusion_experiment(
 
     model = model.to(device)
     model.args = get_cfg()
+    if hasattr(model, "criterion"):
+        if hasattr(model.criterion, "one2many"):
+            model.criterion.one2many.device = torch.device(device)
+        if hasattr(model.criterion, "one2one"):
+            model.criterion.one2one.device = torch.device(device)
 
     optimizer = AdamW(model.parameters(), lr=lr0, weight_decay=weight_decay)
     scheduler = CosineAnnealingLR(optimizer, T_max=epochs, eta_min=lr0 * 0.01)
