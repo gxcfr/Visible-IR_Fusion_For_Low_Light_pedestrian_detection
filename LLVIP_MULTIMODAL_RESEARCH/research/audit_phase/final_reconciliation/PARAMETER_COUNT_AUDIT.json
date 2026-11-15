@@ -1,0 +1,95 @@
+{
+    "audit_date": "2026-11-15",
+    "primary_finding": "Reconciled parameter count discrepancy for E007 (4,903,902 vs. 4,971,992). The discrepancy of 68,090 parameters stems from the class prediction dimension of the YOLO26n Detect head (Layer 23). The actual checkpoint on disk was instantiated from COCO-pretrained yolo26n.pt retaining the 80-class convolution weights (4,971,992 total parameters). When adapted strictly for a single class (nc=1), the theoretical parameter count is 4,903,902.",
+    "e007_parameter_breakdown": {
+        "checkpoint_on_disk": "LLVIP_MULTIMODAL_RESEARCH/experiments/E007_PROPOSED_ASYMMETRIC_FUSION_YOLO26N/weights/best.pt",
+        "total_parameters_in_saved_checkpoint": 4971992,
+        "trainable_parameters": 4971992,
+        "single_class_pruned_theoretical_parameters": 4903902,
+        "discrepancy_parameters": 68090,
+        "discrepancy_cause": "Detection head cv4/one2one_cv3 layer sized for nc=80 (COCO) vs nc=1 (LLVIP single-class pedestrian).",
+        "submodule_breakdown_saved_checkpoint": {
+            "thermal_backbone_layers_0_to_10": {
+                "layer_count": 11,
+                "parameters": 1365472,
+                "percentage_of_total": 27.46
+            },
+            "visible_backbone_layers_0_to_10": {
+                "layer_count": 11,
+                "parameters": 1365472,
+                "percentage_of_total": 27.46
+            },
+            "gate_module_p3": {
+                "parameters": 172544,
+                "percentage_of_total": 3.47
+            },
+            "gate_module_p4": {
+                "parameters": 172544,
+                "percentage_of_total": 3.47
+            },
+            "gate_module_p5": {
+                "parameters": 689152,
+                "percentage_of_total": 13.86
+            },
+            "shared_neck_and_head_layers_11_to_23": {
+                "layer_count": 13,
+                "parameters": 1206808,
+                "percentage_of_total": 24.27
+            }
+        }
+    },
+    "comprehensive_model_parameter_table": [
+        {
+            "experiment_id": "E001",
+            "architecture": "YOLO11n RGB",
+            "total_parameters": 2590000,
+            "trainable_parameters": 2590000,
+            "notes": "Historical baseline."
+        },
+        {
+            "experiment_id": "E002",
+            "architecture": "YOLO26n RGB",
+            "total_parameters": 2367000,
+            "trainable_parameters": 2367000,
+            "notes": "Single-stream unimodal baseline."
+        },
+        {
+            "experiment_id": "E003",
+            "architecture": "YOLO26n Thermal",
+            "total_parameters": 2367000,
+            "trainable_parameters": 2367000,
+            "notes": "Single-stream unimodal baseline."
+        },
+        {
+            "experiment_id": "E004",
+            "architecture": "YOLO26n Late Fusion WBF",
+            "total_parameters": 4734000,
+            "trainable_parameters": 4734000,
+            "notes": "Dual full YOLO26n models (E002 + E003 combined)."
+        },
+        {
+            "experiment_id": "E005",
+            "architecture": "YOLO26n Early Fusion 4CH",
+            "total_parameters": 2371000,
+            "trainable_parameters": 2371000,
+            "notes": "Single-model 4-channel forward. Pipeline correctly classified as single-model forward (not dual-backbone)."
+        },
+        {
+            "experiment_id": "E006",
+            "architecture": "YOLO26n Feature Concatenation",
+            "total_parameters": 3869000,
+            "trainable_parameters": 3869000,
+            "notes": "Dual YOLO26n backbones + channel projection + shared neck/head."
+        },
+        {
+            "experiment_id": "E007",
+            "architecture": "Proposed Asymmetric Gated Fusion YOLO26n",
+            "total_parameters": 4971992,
+            "trainable_parameters": 4971992,
+            "notes": "Dual YOLO26n backbones (1.365M each) + multi-scale gating (1.034M) + shared neck/head (1.207M)."
+        }
+    ],
+    "pipeline_description_corrections": {
+        "E005": "Corrected from 'Dual Letterbox + GPU transfer + Dual-stream forward...' to 'Dual Letterbox (RGB+IR) + Channel Concatenation (4-channel) + GPU transfer + Single-model forward + NMS + scale_boxes'."
+    }
+}

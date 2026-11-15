@@ -1,6 +1,6 @@
 # Reliability-Aware Asymmetric Visible-Infrared Fusion for Low-Light Pedestrian Detection
 
-### Research Status: Phase 2 Experimental Audit & Harmonization Completed
+### Research Status: Phase 2 Audit Closure & Statistical Reconciliation Completed
 
 - **Core Research Objective**: *"Investigate whether reliability-aware asymmetric visible-infrared fusion improves pedestrian detection under challenging illumination conditions relative to unimodal and conventional fusion baselines."*
 - **Dataset**: LLVIP (`C:\LLVIP\LLVIP`) — 15,488 verified pairs (100% paired, single class `person`).
@@ -11,9 +11,9 @@
 
 ---
 
-## 🔍 Phase 2 Research Audit and Harmonized Validation Results
+## 🔍 Master Harmonized Validation Results (1,803 Val Pairs, 5,086 Ground Truths)
 
-Following external academic peer review, all seven experiments (E001–E007) were rigorously audited under a single unified evaluation framework. All models were evaluated on the **exact same 1,803 validation pairs** (5,086 ground truth pedestrians) in the **original $1280 \times 1024$ coordinate system** using descending-IoU matching and exact unletterboxing:
+All seven experiments (E001–E007) were evaluated under a standardized, unified evaluation framework in the **original $1280 \times 1024$ coordinate system** using Ultralytics descending-IoU matching and exact unletterboxing:
 
 ### Unified Validation Comparison Table
 
@@ -31,7 +31,7 @@ Following external academic peer review, all seven experiments (E001–E007) wer
 
 ### Standardized GPU Latency and Computational Cost
 
-Measured on NVIDIA GeForce RTX 4060 Laptop GPU under strict controls (batch size 1, 50 warmup + 200 measured iterations, `torch.cuda.synchronize()`):
+Measured on NVIDIA GeForce RTX 4060 Laptop GPU (50 warmup + 200 measured iterations, `torch.cuda.synchronize()`, full end-to-end pipeline):
 
 | Exp ID | Architecture | Modality | Params (M) | FLOPs (G) | Model Fwd (ms) | Model FPS | End-to-End (ms) | End-to-End FPS |
 |:---:|:---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
@@ -41,36 +41,53 @@ Measured on NVIDIA GeForce RTX 4060 Laptop GPU under strict controls (batch size
 | **E004** | YOLO26n | Late (WBF) | 4.74 | 10.4 | $20.38 \pm 0.65$ | 49.1 | $23.89 \pm 0.83$ | 41.9 |
 | **E005** | YOLO26n | Early (4CH) | 2.37 | 5.2 | $10.16 \pm 0.46$ | 98.4 | $14.41 \pm 0.69$ | 69.4 |
 | **E006** | YOLO26n | Feature Concat | 3.87 | 8.5 | $13.39 \pm 0.58$ | 74.7 | $17.48 \pm 0.77$ | 57.2 |
-| **E007** | Proposed Fusion | Asym Gated | 4.90 | 9.8 | $14.17 \pm 0.75$ | 70.6 | $17.94 \pm 0.89$ | 55.7 |
+| **E007** | Proposed Fusion | Asym Gated | 4.97 | 9.8 | $14.17 \pm 0.75$ | 70.6 | $17.94 \pm 0.89$ | 55.7 |
 
 ---
 
-## 📌 Critical Audit Findings and Corrections
+## 📊 Dataset Annotation Reconciliation
 
-1. **E003 (Thermal) vs E007 (Proposed Fusion)**:
-   - On the nighttime LLVIP benchmark, **Thermal-only (E003: 94.12% $mAP_{50}$)** slightly outperforms all multimodal architectures, including E007 (93.70%).
-   - In nighttime urban surveillance, thermal radiation provides exceptionally crisp contrast, whereas visible sensors suffer from underexposure and noise. Adding raw or weakly conditioned visible features inevitably injects a small degree of background noise.
-   - Previous claims of E007 outperforming thermal-only were artifactual, resulting from disparate evaluation scripts and coordinate scaling.
-2. **Architecture Clarification for E007**:
-   - E007 does **not** compute explicit scalar quality descriptors $Q_T, Q_V$. It is a **learned feature-conditioned adaptive gating module**.
-   - The visible branch is **not** a lightweight encoder; it duplicates the full 11-layer YOLO26n backbone (1.365M parameters per stream, 4.90M total model parameters).
-   - Asymmetry is **functional/semantic**: thermal features $F_T$ pass through an unmodulated additive identity shortcut, while visible features $P(F_V)$ are adaptively modulated by gate $G_V \in (0, 1)$:
-     $$F_{\text{fused}} = F_T + G_V \odot P(F_V)$$
-3. **Gate Activation Semantics**:
-   - Gate activations represent learned spatial/channel modulations, **not** calibrated physical sensor reliability probabilities.
-   - Gate values inside pedestrian bounding boxes are systematically lower (~0.36) than in background areas (~0.51), confirming that the network actively dampens noisy visible features on pedestrian heat signatures.
-4. **Early Stopping and Checkpoints**:
-   - Validation fitness peaked at **Epoch 5** for both E006 and E007, triggering early stopping at Epoch 17. All evaluated metrics strictly reflect official `best.pt` checkpoints.
+| Partition | Image Pairs | Raw XML Annotations | Excluded Invalid Annotations | Valid Converted Annotations | Valid Evaluation Ground Truths |
+|:---|:---:|:---:|:---:|:---:|:---:|
+| **Training** | 10,222 | 29,047 | 3 (zero-width lines: `090437`, `091180`, `170350`) | 29,044 | 29,044 |
+| **Validation** | 1,803 | 5,088 | **2 (zero-width lines in Scene 02: `020118`, `020236`)** | **5,086** | **5,086** |
+| **Test** *(Sealed)* | 3,463 | 8,302 | 0 | 8,302 | 8,302 |
+| **Total** | **15,488** | **42,437** | **5** | **42,432** | **42,432** |
 
 ---
 
-## 📁 Audit Documentation Index (`research/audit_phase/`)
+## 📌 Reconciled Findings & Scientific Conclusions
 
-- [AUDIT_REPORT.md](file:///C:/VI%20Fusion%20for%20LL-PD/research/audit_phase/AUDIT_REPORT.md) — Master comprehensive 12-section audit report.
-- [architecture_audit_report.md](file:///C:/VI%20Fusion%20for%20LL-PD/research/audit_phase/architecture_audit_report.md) — Full code-level graph and parameter audit.
-- [convergence_analysis.md](file:///C:/VI%20Fusion%20for%20LL-PD/research/audit_phase/convergence_analysis.md) — Training loss and validation fitness convergence study.
-- [standardized_latency_report.md](file:///C:/VI%20Fusion%20for%20LL-PD/research/audit_phase/standardized_latency_report.md) — GPU benchmarking protocol and results.
-- [evaluation_protocol.md](file:///C:/VI%20Fusion%20for%20LL-PD/research/audit_phase/evaluation_protocol.md) — Formal standardized evaluation specification.
-- [unified_validation_metrics.csv](file:///C:/VI%20Fusion%20for%20LL-PD/research/audit_phase/unified_validation_metrics.csv) — Harmonized metrics in tabular format.
-- [gate_analysis/](file:///C:/VI%20Fusion%20for%20LL-PD/research/audit_phase/gate_analysis/) — Extended gate activation distributions and environmental correlation charts.
-- [qualitative_analysis/](file:///C:/VI%20Fusion%20for%20LL-PD/research/audit_phase/qualitative_analysis/) — 8-panel high-resolution detection comparisons across all 4 validation scenes.
+1. **Unimodal Thermal Primacy**: **E003 (Thermal-only)** is the strongest individual unimodal model on the LLVIP nighttime benchmark, achieving the highest $mAP_{50}$ (**94.12%**) and highest recall (**90.48%**). Thermal radiation provides an optimal contrast signal for human body heat in outdoor nighttime surveillance.
+2. **Feature Concatenation Localization**: **E006 (Feature Concatenation)** attains the highest numerical high-threshold localization performance ($mAP_{50-95} = \mathbf{56.09\%}$), demonstrating that direct multi-scale channel concatenation preserves spatial detail.
+3. **Proposed Asymmetric Fusion Parity**: **E007 (Proposed Asymmetric Gated Fusion)** achieves performance closely trailing E003 in recall (**90.25%** vs 90.48%) and localization ($mAP_{50-95} = \mathbf{55.98\%}$ vs 55.96%), while achieving $mAP_{50} = \mathbf{93.70\%}$.
+4. **Relative Gains over E006**: E007 improves detection recall relative to E006 (**90.25%** vs 88.50%) and increases $mAP_{50}$ (**93.70%** vs 93.24%).
+5. **Computational Cost Tradeoff**: E007 incurs greater computational complexity (4.97M parameters, 17.94 ms end-to-end) than unimodal thermal (2.37M parameters, 12.31 ms end-to-end), while running well above the real-time 30 FPS threshold (55.7 FPS).
+6. **Absence of Universal Superiority**: **The current experiments do not establish that adaptive fusion is universally superior to thermal-only on this dataset**. Under typical nighttime LLVIP conditions, adding visible features offers marginal overall numerical benefit because thermal contrast is already near saturation.
+7. **Empirical Value of Fusion in Degraded Conditions**: In complex localized scenarios (e.g., Scene 25 with artificial headlight glare and deep shadows), unimodal thermal misses shadowed individuals and visible misses thermal contrast targets; multi-modal feature fusion successfully recovers **both** pedestrians.
+8. **Need for Multi-Seed Verification**: Additional random training seeds, variance testing, and daylight/fog benchmark ablations are needed before making strong statistical significance claims regarding fractional percentage differences ($<0.5\%$).
+
+---
+
+## 🔍 Reconciled Architectural Details for E007
+
+- **Parameter Count Reconciliation**:
+  - The physical checkpoint saved on disk contains **4,971,992 parameters** (4.97M) because it was initialized from the COCO-pretrained `yolo26n.pt` base model which retains the 80-class detection head.
+  - A theoretical single-class pruned model contains **4,903,902 parameters** (4.90M).
+  - Thermal Backbone: 1,365,472 params | Visible Backbone: 1,365,472 params | Multi-Scale Gating: 1,034,240 params | Neck & Head: 1,206,808 params.
+- **Asymmetric Residual Formulation**:
+  $$F_{\text{fused}} = F_T + G_V \odot P(F_V)$$
+  where thermal features $F_T$ pass through an unmodulated additive identity shortcut, while visible features $P(F_V)$ are adaptively modulated by dynamic gate map $G_V \in (0, 1)$.
+- **Gate Semantics**: Gate values represent unitless learned deep feature modulation scalars, **not** calibrated physical sensor reliability probabilities. Inside pedestrian heat signatures, the network attenuates visible features ($G_V \approx 0.367$) relative to background ($G_V \approx 0.518$) to prioritize crisp thermal silhouettes.
+
+---
+
+## 📁 Phase 2 Final Reconciliation Deliverables (`research/audit_phase/final_reconciliation/`)
+
+- [FINAL_RESEARCH_AUDIT.md](file:///C:/VI%20Fusion%20for%20LL-PD/research/audit_phase/final_reconciliation/FINAL_RESEARCH_AUDIT.md) — Master comprehensive reconciliation document.
+- [CORRECTED_GATE_STATISTICS.json](file:///C:/VI%20Fusion%20for%20LL-PD/research/audit_phase/final_reconciliation/CORRECTED_GATE_STATISTICS.json) — Canonical gate statistics across all 1,803 validation pairs.
+- [CORRECTED_GATE_ANALYSIS.png](file:///C:/VI%20Fusion%20for%20LL-PD/research/audit_phase/final_reconciliation/CORRECTED_GATE_ANALYSIS.png) — Environmental correlation and foreground/background gate distributions.
+- [CORRECTED_OBJECT_SCALE_ANALYSIS.png](file:///C:/VI%20Fusion%20for%20LL-PD/research/audit_phase/final_reconciliation/CORRECTED_OBJECT_SCALE_ANALYSIS.png) — Pedestrian scale analysis with exact sample counts.
+- [CORRECTED_QUALITATIVE_ANALYSIS.md](file:///C:/VI%20Fusion%20for%20LL-PD/research/audit_phase/final_reconciliation/CORRECTED_QUALITATIVE_ANALYSIS.md) — Ground-truth matched evaluation across Scenes 02, 05, 07, and 25.
+- [PARAMETER_COUNT_AUDIT.json](file:///C:/VI%20Fusion%20for%20LL-PD/research/audit_phase/final_reconciliation/PARAMETER_COUNT_AUDIT.json) — Parameter count accounting audit (4.97M vs 4.90M).
+- [UNIFIED_EVALUATOR_SOURCE.md](file:///C:/VI%20Fusion%20for%20LL-PD/research/audit_phase/final_reconciliation/UNIFIED_EVALUATOR_SOURCE.md) — Complete evaluation source code and package versions.
