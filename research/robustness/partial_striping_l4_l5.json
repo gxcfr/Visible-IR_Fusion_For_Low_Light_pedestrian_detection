@@ -1,0 +1,142 @@
+{
+  "metrics": [
+    {
+      "corruption_suite": "thermal_striping",
+      "level": 4,
+      "model_id": "E006_CONCAT",
+      "clean_mAP50": 93.24,
+      "mAP50": 55.33,
+      "mAP50_95": 19.19,
+      "retention_pct": 59.34,
+      "precision_025": 76.45,
+      "recall_025": 43.79,
+      "f1_025": 55.68,
+      "fp_per_image": 0.38,
+      "fn_at_025": 2859,
+      "total_preds": 2913
+    },
+    {
+      "corruption_suite": "thermal_striping",
+      "level": 4,
+      "model_id": "E007_ASYM_GATED",
+      "clean_mAP50": 93.7,
+      "mAP50": 71.7,
+      "mAP50_95": 31.31,
+      "retention_pct": 76.52,
+      "precision_025": 86.48,
+      "recall_025": 58.36,
+      "f1_025": 69.69,
+      "fp_per_image": 0.257,
+      "fn_at_025": 2118,
+      "total_preds": 3432
+    },
+    {
+      "corruption_suite": "thermal_striping",
+      "level": 5,
+      "model_id": "E002_RGB",
+      "clean_mAP50": 73.04,
+      "mAP50": 73.09,
+      "mAP50_95": 35.43,
+      "retention_pct": 100.07,
+      "precision_025": 86.48,
+      "recall_025": 65.75,
+      "f1_025": 74.7,
+      "fp_per_image": 0.29,
+      "fn_at_025": 1742,
+      "total_preds": 3867
+    },
+    {
+      "corruption_suite": "thermal_striping",
+      "level": 5,
+      "model_id": "E003_THERMAL",
+      "clean_mAP50": 94.12,
+      "mAP50": 1.98,
+      "mAP50_95": 0.73,
+      "retention_pct": 2.1,
+      "precision_025": 46.15,
+      "recall_025": 0.35,
+      "f1_025": 0.7,
+      "fp_per_image": 0.012,
+      "fn_at_025": 5068,
+      "total_preds": 39
+    },
+    {
+      "corruption_suite": "thermal_striping",
+      "level": 5,
+      "model_id": "E004_WBF",
+      "clean_mAP50": 93.74,
+      "mAP50": 72.18,
+      "mAP50_95": 33.81,
+      "retention_pct": 77.0,
+      "precision_025": 97.96,
+      "recall_025": 26.46,
+      "f1_025": 41.67,
+      "fp_per_image": 0.016,
+      "fn_at_025": 3740,
+      "total_preds": 1374
+    },
+    {
+      "corruption_suite": "thermal_striping",
+      "level": 5,
+      "model_id": "E005_EARLY4CH",
+      "clean_mAP50": 72.24,
+      "mAP50": 4.86,
+      "mAP50_95": 1.39,
+      "retention_pct": 6.73,
+      "precision_025": 32.43,
+      "recall_025": 1.42,
+      "f1_025": 2.71,
+      "fp_per_image": 0.083,
+      "fn_at_025": 5014,
+      "total_preds": 222
+    },
+    {
+      "corruption_suite": "thermal_striping",
+      "level": 5,
+      "model_id": "E006_CONCAT",
+      "clean_mAP50": 93.24,
+      "mAP50": 30.88,
+      "mAP50_95": 8.34,
+      "retention_pct": 33.12,
+      "precision_025": 71.64,
+      "recall_025": 21.16,
+      "f1_025": 32.67,
+      "fp_per_image": 0.236,
+      "fn_at_025": 4010,
+      "total_preds": 1502
+    },
+    {
+      "corruption_suite": "thermal_striping",
+      "level": 5,
+      "model_id": "E007_ASYM_GATED",
+      "clean_mAP50": 93.7,
+      "mAP50": 51.17,
+      "mAP50_95": 18.71,
+      "retention_pct": 54.61,
+      "precision_025": 83.47,
+      "recall_025": 35.55,
+      "f1_025": 49.86,
+      "fp_per_image": 0.199,
+      "fn_at_025": 3278,
+      "total_preds": 2166
+    }
+  ],
+  "gates": [
+    {
+      "corruption_type": "thermal_striping",
+      "level": 4,
+      "mean_p3_gate": 0.4849,
+      "delta_p3_gate": -0.0272,
+      "mean_p4_gate": 0.5985,
+      "mean_p5_gate": 0.5646
+    },
+    {
+      "corruption_type": "thermal_striping",
+      "level": 5,
+      "mean_p3_gate": 0.4801,
+      "delta_p3_gate": -0.032,
+      "mean_p4_gate": 0.5982,
+      "mean_p5_gate": 0.5596
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "status": "STOPPED_BY_USER",
+  "description": "Manifest of uncompleted or deferred robustness conditions as instructed during Stage 4 review.",
+  "incomplete_suites": [
+    {
+      "suite_id": "R006",
+      "name": "thermal_dead_pixels",
+      "modality": "Thermal (Infrared)",
+      "description": "Stuck dead pixel / sensor saturation dropout [pct=0.1%, 0.5%, 1.0%, 2.0%, 5.0%]",
+      "planned_levels": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "completed_levels": [],
+      "status": "INCOMPLETE / STOPPED PRIOR TO COMPLETION",
+      "reason": "Gracefully stopped at user request; results unfinalized."
+    }
+  ],
+  "deferred_suites": [
+    {
+      "suite_id": "R007A",
+      "name": "simul_darkness_washout",
+      "modality": "Simultaneous Multimodal",
+      "description": "Simultaneous RGB luminance reduction + thermal contrast compression",
+      "planned_levels": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "completed_levels": [],
+      "status": "DEFERRED / UNEXECUTED",
+      "reason": "Execution terminated by user decision to preserve existing benchmark scope."
+    },
+    {
+      "suite_id": "R007B",
+      "name": "simul_noise_striping",
+      "modality": "Simultaneous Multimodal",
+      "description": "Simultaneous RGB Gaussian noise + thermal column striping",
+      "planned_levels": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "completed_levels": [],
+      "status": "DEFERRED / UNEXECUTED",
+      "reason": "Execution terminated by user decision to preserve existing benchmark scope."
+    }
+  ]
+}

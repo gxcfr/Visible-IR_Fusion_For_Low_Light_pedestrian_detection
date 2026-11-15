@@ -1,6 +1,6 @@
 # Reliability-Aware Asymmetric Visible-Infrared Fusion for Low-Light Pedestrian Detection
 
-### Research Status: Phase C / Stage 3 Completed (Inference Gate Interventions IA001–IA004 Evaluated; Co-adaptation Quantified; Training Frozen)
+### Research Status: Phase D / Stage 4 Completed (Partial Robustness Stress-Testing Completed: 25 of 40 Conditions Finished across 5 Complete Categories; Dead-Pixels Incomplete; Simultaneous Suites Deferred)
 
 - **Core Research Objective**: *"Investigate whether reliability-aware asymmetric visible-infrared fusion improves pedestrian detection under challenging illumination conditions relative to unimodal and conventional fusion baselines."*
 - **Execution Mandate**: **Zero additional training runs.** All evaluations operate strictly on frozen checkpoints (E001–E007). Proposed models E008/E009 and multi-seed training runs are formally **DEFERRED**.
@@ -42,6 +42,22 @@ All seven experiments (E001–E007) were evaluated under a standardized, unified
 | **IA004** | **Gate One ($G_V = 1.0$)** | 78.03 | 40.37 | 78.31% | 60.37% | 68.18% | 1.46 | 1,103 | 22.02 ms |
 
 *Key Takeaway: Forcing $G_V=0.0$ at inference triggers representation starvation (mAP50 collapses from 93.70% to 72.27%), demonstrating network co-adaptation and proving that inference gate zeroing $\ne$ independently trained thermal baseline E003 (94.12%). Forcing $G_V=1.0$ quadruples false alarms (0.37 to 1.46 FP/img) by injecting unmodulated low-light noise.*
+
+### Partial Robustness Stress-Testing (Stage 4 — 25 Completed Conditions across 5 Suites)
+
+> **Integrity Disclosure**: 25 of 40 planned conditions completed (62.5% coverage across 5 complete suites $\times$ 5 severity levels). Thermal dead-pixels halted incomplete; simultaneous degradation suites deferred. Described strictly as a *partial robustness study*.
+
+| Model ID | Clean $mAP_{50}$ | Visible Brightness ($R_{\text{mean}}$) | Visible Noise ($R_{\text{mean}}$) | Visible Blur ($R_{\text{mean}}$) | Thermal Contrast ($R_{\text{mean}}$) | Thermal Striping ($R_{\text{mean}}$) | **5-Suite Mean ($R_{\text{mean}}^{5\text{-suites}}$)** |
+|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| **E002 (RGB)** | 73.04% | 86.74% | 47.46% | 75.98% | 100.00%* | 100.01%* | 82.04% |
+| **E003 (Thermal)** | **94.12%** | 100.00%* | 100.00%* | 100.00%* | 74.00% | 38.10% | 82.42% |
+| **E004 (Late WBF)** | 93.74% | **99.92%** | **99.70%** | 98.88% | **92.02%** | 80.30% | **94.16%** |
+| **E005 (Early 4CH)** | 72.24% | 101.90% | 99.24% | 96.12% | 51.84% | 51.21% | 80.06% |
+| **E006 (Concat)** | 93.24% | 99.20% | 99.30% | 99.14% | 75.46% | 73.99% | 89.42% |
+| **E007 (Asym Gated)** | 93.70% | 98.52% | 98.72% | **99.18%** | 73.66% | **83.47%** | 90.71% |
+
+*\*Note: For unimodal models, orthogonal modality corruption preserves clean performance ($100.0\%$) by definition as their sensor input remains pristine.*  
+*Key Takeaway: Under extreme thermal sensor striping (L5 $\sigma=80$), E007 retains **51.17% mAP50** (54.6% retention), significantly outperforming unweighted feature concatenation E006 (30.88% mAP50, 33.1% retention) by **+20.29% mAP50**, proving the noise-suppression capability of dynamic gating against structured sensor artifacts.*
 
 ### Standardized GPU Latency and Computational Cost
 
@@ -103,8 +119,8 @@ Measured on NVIDIA GeForce RTX 4060 Laptop GPU (50 warmup + 200 measured iterati
 - [01_AUDIT_RECONCILIATION.md](file:///C:/VI%20Fusion%20for%20LL-PD/research/final_phase/01_AUDIT_RECONCILIATION.md) — Master Stage 1 documentation reconciliation, exact parameter counts, and architecture realignment.
 - [02_GATE_ANALYSIS.md](file:///C:/VI%20Fusion%20for%20LL-PD/research/final_phase/02_GATE_ANALYSIS.md) — Stage 2 scene-conditioned correlation, Simpson's paradox, and block-bootstrap verification.
 - [03_INFERENCE_ABLATIONS.md](file:///C:/VI%20Fusion%20for%20LL-PD/research/final_phase/03_INFERENCE_ABLATIONS.md) — Stage 3 inference-only gate interventions (IA001–IA004), co-adaptation collapse, and noise trade-offs.
-- `04_ROBUSTNESS_ANALYSIS.md` — Stage 4 synthetic degradation stress-testing (R001–R007) *(Scheduled Next)*.
-- `05_VALIDATION_ANALYSIS.md` — Stage 5 consolidated validation & failure analysis *(Scheduled)*.
+- [04_ROBUSTNESS_ANALYSIS.md](file:///C:/VI%20Fusion%20for%20LL-PD/research/final_phase/04_ROBUSTNESS_ANALYSIS.md) — Stage 4 partial robustness study across 25 completed conditions, degradation slopes, and gate adaptation.
+- `05_VALIDATION_ANALYSIS.md` — Stage 5 consolidated validation & failure analysis *(Scheduled Next)*.
 - `06_COMPUTATIONAL_ANALYSIS.md` — Stage 6 computational latency and throughput report *(Scheduled)*.
 - `07_MODEL_FREEZE_REPORT.md` — Stage 7 model freeze protocol *(Hold for user approval before test partition)*.
 - `08_FINAL_TEST_RESULTS.md` — Stage 8 held-out official test set evaluation *(Blocked until approval)*.

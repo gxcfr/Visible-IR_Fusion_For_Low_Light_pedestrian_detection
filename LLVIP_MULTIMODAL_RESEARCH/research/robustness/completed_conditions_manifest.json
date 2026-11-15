@@ -1,0 +1,116 @@
+{
+  "status": "PARTIAL_ROBUSTNESS_EVALUATION",
+  "description": "Selected-corruption robustness evaluation on LLVIP validation set (1,803 image pairs, native 1280x1024 matching).",
+  "total_conditions_planned": 40,
+  "total_conditions_completed": 25,
+  "completion_ratio": "62.5%",
+  "completed_suites_count": 5,
+  "severity_levels_per_completed_suite": 5,
+  "completed_suites": [
+    {
+      "suite_id": "R001",
+      "name": "rgb_brightness",
+      "modality": "Visible (RGB)",
+      "description": "Multiplicative luminance reduction [0.80, 0.60, 0.40, 0.20, 0.05]",
+      "levels_completed": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "models_evaluated": [
+        "E002_RGB",
+        "E003_THERMAL",
+        "E004_WBF",
+        "E005_EARLY4CH",
+        "E006_CONCAT",
+        "E007_ASYM_GATED"
+      ]
+    },
+    {
+      "suite_id": "R002",
+      "name": "rgb_noise",
+      "modality": "Visible (RGB)",
+      "description": "Additive zero-mean Gaussian noise [sigma=0.02, 0.05, 0.10, 0.18, 0.28]",
+      "levels_completed": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "models_evaluated": [
+        "E002_RGB",
+        "E003_THERMAL",
+        "E004_WBF",
+        "E005_EARLY4CH",
+        "E006_CONCAT",
+        "E007_ASYM_GATED"
+      ]
+    },
+    {
+      "suite_id": "R003",
+      "name": "rgb_blur",
+      "modality": "Visible (RGB)",
+      "description": "Gaussian optical defocus blur [kernel=(3,3) to (25,25)]",
+      "levels_completed": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "models_evaluated": [
+        "E002_RGB",
+        "E003_THERMAL",
+        "E004_WBF",
+        "E005_EARLY4CH",
+        "E006_CONCAT",
+        "E007_ASYM_GATED"
+      ]
+    },
+    {
+      "suite_id": "R004",
+      "name": "thermal_contrast",
+      "modality": "Thermal (Infrared)",
+      "description": "Thermal contrast compression / washout [gamma=0.75, 0.50, 0.30, 0.15, 0.02]",
+      "levels_completed": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "models_evaluated": [
+        "E002_RGB",
+        "E003_THERMAL",
+        "E004_WBF",
+        "E005_EARLY4CH",
+        "E006_CONCAT",
+        "E007_ASYM_GATED"
+      ]
+    },
+    {
+      "suite_id": "R005",
+      "name": "thermal_striping",
+      "modality": "Thermal (Infrared)",
+      "description": "Horizontal fixed-pattern column striping noise [std=5, 15, 30, 50, 80]",
+      "levels_completed": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "models_evaluated": [
+        "E002_RGB",
+        "E003_THERMAL",
+        "E004_WBF",
+        "E005_EARLY4CH",
+        "E006_CONCAT",
+        "E007_ASYM_GATED"
+      ]
+    }
+  ]
+}

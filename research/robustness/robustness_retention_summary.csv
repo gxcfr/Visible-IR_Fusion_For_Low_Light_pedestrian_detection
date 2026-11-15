@@ -1,0 +1,7 @@
+model_id,clean_mAP50,R_mean_rgb_brightness,R_mean_rgb_noise,R_mean_rgb_blur,R_mean_thermal_contrast,R_mean_thermal_striping,R_mean_5_suites
+E002_RGB,73.04,86.74,47.46,75.98,100.0,100.01,82.04
+E003_THERMAL,94.12,100.0,100.0,100.0,74.0,38.1,82.42
+E004_WBF,93.74,99.92,99.7,98.88,92.02,80.3,94.16
+E005_EARLY4CH,72.24,101.9,99.24,96.12,51.84,51.21,80.06
+E006_CONCAT,93.24,99.2,99.3,99.14,75.46,73.99,89.42
+E007_ASYM_GATED,93.7,98.52,98.72,99.18,73.66,83.47,90.71
