@@ -110,6 +110,26 @@ Every experiment receives a unique deterministic identifier:
 - **Precision**: 0.8939 | **Recall**: 0.7191 | **F1**: 0.7970
 - **Latency**: 15.80 ms (63.3 FPS)
 
+### [Execution] Milestone 5 - E005_EARLY_FUSION_4CH_YOLO26N
+- **Date**: 2026-11-15
+- **Status**: COMPLETED
+- **Strategy**: 4-Channel Input Stem Early Fusion `[R, G, B, Thermal]`
+- **Pretrained Transfer**: Channels 0-2 from YOLO26n RGB, channel 3 initialized with RGB mean.
+- **Stopping Dynamics**: Stopped at Epoch 39 (patience=12 triggered after peak at Epoch 27).
+- **Validation Metrics (1,803 pairs)**:
+  - Precision: **82.66%**
+  - Recall: **64.59%**
+  - F1-Score: **72.52%**
+  - mAP50: **71.53%**
+  - mAP50-95: **37.40%**
+- **Hardware Latency**:
+  - Model Latency: **13.64 ms**
+  - Throughput: **73.31 FPS**
+  - Parameters: **2,572,424 (~2.57M)**
+- **Findings**: Low-level pixel fusion exposes the feature extractor to noisy visible imagery, causing substantial degradation compared to unimodal thermal (**71.53% vs 94.49%**). Demonstrates the critical necessity of decoupled feature extraction and adaptive reliability gating.
+
+---
+
 ### [Execution] Milestone 5 - E004_LATE_FUSION_WBF_YOLO26N
 - **Date**: 2026-11-15
 - **Status**: COMPLETED
