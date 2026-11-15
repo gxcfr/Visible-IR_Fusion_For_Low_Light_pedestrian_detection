@@ -1,0 +1,18 @@
+amp: true
+batch_size: 8
+cos_lr: true
+epochs: 40
+experiment_id: E003_THERMAL_YOLO26N
+fliplr: 0.5
+hsv_h: 0.0
+hsv_s: 0.0
+hsv_v: 0.2
+img_size: 640
+lr0: 0.001
+modality: thermal
+model_weights: C:\VI Fusion for LL-PD\LLVIP_MULTIMODAL_RESEARCH\weights\yolo26n.pt
+optimizer: AdamW
+patience: 12
+seed: 42
+warmup_epochs: 3
+weight_decay: 0.0005

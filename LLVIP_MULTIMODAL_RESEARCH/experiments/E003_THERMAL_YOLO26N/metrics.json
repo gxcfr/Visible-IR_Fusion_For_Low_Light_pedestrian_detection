@@ -1,0 +1,38 @@
+{
+    "experiment_id": "E003_THERMAL_YOLO26N",
+    "modality": "thermal",
+    "model_architecture": "yolo26n",
+    "status": "COMPLETED",
+    "training_duration_seconds": 5930.29,
+    "training_duration_minutes": 98.84,
+    "peak_vram_allocated_mb": 1247.05,
+    "stopping_epoch": 19,
+    "best_epoch": 14,
+    "stopping_reason": "early_stopping_triggered (patience=12 exhausted after best epoch 14)",
+    "improvement_near_stop": "No fitness improvement for 12 consecutive epochs since epoch 14",
+    "validation_metrics": {
+        "precision": 0.9413,
+        "recall": 0.879,
+        "f1_score": 0.9091,
+        "mAP50": 0.9449,
+        "mAP50-95": 0.5679
+    },
+    "latency_metrics": {
+        "device": "cuda:0",
+        "input_resolution": "640x640",
+        "batch_size": 1,
+        "model_parameters": 2504190,
+        "model_latency_mean_ms": 10.799,
+        "model_latency_std_ms": 1.837,
+        "model_latency_min_ms": 8.921,
+        "model_latency_max_ms": 18.966,
+        "e2e_latency_mean_ms": 9.009,
+        "fps": 92.6,
+        "warmup_runs": 50,
+        "test_runs": 200
+    },
+    "checkpoint_paths": {
+        "best": "C:\\VI Fusion for LL-PD\\LLVIP_MULTIMODAL_RESEARCH\\experiments\\E003_THERMAL_YOLO26N\\weights\\best.pt",
+        "last": "C:\\VI Fusion for LL-PD\\LLVIP_MULTIMODAL_RESEARCH\\experiments\\E003_THERMAL_YOLO26N\\weights\\last.pt"
+    }
+}

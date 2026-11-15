@@ -99,3 +99,23 @@ Every experiment receives a unique deterministic identifier:
 - **mAP50**: 0.7934 | **mAP50-95**: 0.4047
 - **Precision**: 0.8939 | **Recall**: 0.7191 | **F1**: 0.7970
 - **Latency**: 15.80 ms (63.3 FPS)
+
+### [Execution] Milestone 4 - E002_RGB_YOLO26N
+- **Date**: 2026-11-15
+- **Status**: COMPLETED
+- **Architecture**: YOLO26n
+- **Modality**: RGB
+- **Stopping Epoch**: 37 / 40 (Best: 25)
+- **mAP50**: 0.7934 | **mAP50-95**: 0.4047
+- **Precision**: 0.8939 | **Recall**: 0.7191 | **F1**: 0.7970
+- **Latency**: 15.80 ms (63.3 FPS)
+
+### [Execution] Milestone 4 - E003_THERMAL_YOLO26N
+- **Date**: 2026-11-15
+- **Status**: COMPLETED
+- **Architecture**: YOLO26n
+- **Modality**: THERMAL
+- **Stopping Epoch**: 19 / 40 (Best: 14)
+- **mAP50**: 0.9449 | **mAP50-95**: 0.5679
+- **Precision**: 0.9413 | **Recall**: 0.8790 | **F1**: 0.9091
+- **Latency**: 10.80 ms (92.6 FPS)
