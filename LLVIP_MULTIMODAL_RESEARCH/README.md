@@ -1,6 +1,6 @@
 # Reliability-Aware Asymmetric Visible-Infrared Fusion for Low-Light Pedestrian Detection
 
-### Research Status: Stage 8 Completed (Official Test Evaluation Completed Across 3,463 Test Pairs; Stage 9 Final Research Paper Package In Progress)
+### Research Status: Stages 1–9 Fully Completed (Final Academic Paper Package Ready)
 
 - **Core Research Objective**: *"Investigate whether reliability-aware asymmetric visible-infrared fusion improves pedestrian detection under challenging illumination conditions relative to unimodal and conventional fusion baselines."*
 - **Execution Mandate**: **Zero additional training runs.** All evaluations operate strictly on frozen checkpoints (E001–E007). Proposed models E008/E009 and multi-seed training runs are formally **DEFERRED**.
@@ -140,6 +140,13 @@ Following Stage 7 model freeze and cryptographic SHA256 registration, the offici
 - [06_COMPUTATIONAL_ANALYSIS.md](file:///C:/VI%20Fusion%20for%20LL-PD/research/final_phase/06_COMPUTATIONAL_ANALYSIS.md) — Stage 6 computational efficiency, FLOPs, latency, and memory profiling on NVIDIA RTX 4060 GPU.
 - [07_MODEL_FREEZE_REPORT.md](file:///C:/VI%20Fusion%20for%20LL-PD/research/final_phase/07_MODEL_FREEZE_REPORT.md) — Stage 7 model selection freeze, cryptographic SHA256 checksums, and sealed test protocol.
 - [08_FINAL_TEST_RESULTS.md](file:///C:/VI%20Fusion%20for%20LL-PD/research/final_phase/08_FINAL_TEST_RESULTS.md) — Stage 8 held-out official test set evaluation across 3,463 pairs and 7 unseen scenes.
+
+---
+
+## 📄 Academic Publication Package (`research/paper/`)
+
+- [final_research_paper.md](file:///C:/VI%20Fusion%20for%20LL-PD/research/paper/final_research_paper.md) — Complete academic research paper (*Reliability-Aware Asymmetric Visible-Infrared Fusion for Low-Light Pedestrian Detection*) spanning Abstract, Introduction, Methodology, Harmonization, Validation, Official Test, Simpson's Paradox, Robustness, Hardware Profiling, and Epistemological Limitations.
+- [references.bib](file:///C:/VI%20Fusion%20for%20LL-PD/research/paper/references.bib) — Complete BibTeX bibliographic citations.
 
 ---
 
