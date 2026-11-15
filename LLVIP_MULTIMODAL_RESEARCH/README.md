@@ -145,10 +145,7 @@
 | **E004** | YOLO26n | Late Fusion (WBF) | **0.9135** | **0.5249** | **0.8545** | **0.8815** | **0.8678** | **20.38** | **49.07** | 5,008,380 | 1,840 MB | **COMPLETED** |
 | **E005** | YOLO26n | Early Fusion (4-Channel) | **0.7153** | **0.3740** | **0.6459** | **0.8266** | **0.7252** | **13.64** | **73.31** | 2,572,424 | 2,213 MB | **COMPLETED** |
 | **E006** | YOLO26n | Feature Concatenation | **0.9358** | **0.5662** | **0.8632** | **0.9348** | **0.8976** | **14.73** | **67.89** | 4,135,384 | 2,096 MB | **COMPLETED** |
-| **E007** | Proposed | Asymmetric Gated Fusion | *Pending* | *Pending* | *Pending* | *Pending* | *Pending* | *Pending* | *Pending* | ~4.2M | — | *Queued* |
-| **E005** | YOLO26n | Early Fusion (4-Channel) | *Pending* | *Pending* | *Pending* | *Pending* | *Pending* | *Pending* | *Pending* | ~2.57M | — | *Queued* |
-| **E006** | YOLO26n | Feature Concatenation | *Pending* | *Pending* | *Pending* | *Pending* | *Pending* | *Pending* | *Pending* | ~3.8M | — | *Queued* |
-| **E007** | Proposed | Asymmetric Gated Fusion | *Pending* | *Pending* | *Pending* | *Pending* | *Pending* | *Pending* | *Pending* | ~3.9M | — | *Queued* |
+| **E007** | Proposed | Asymmetric Gated Fusion | **0.9411** | **0.5658** | **0.8769** | **0.9389** | **0.9069** | **17.30** | **57.80** | 4,971,992 | 2,268 MB | **COMPLETED** |
 
 ---
 
@@ -223,7 +220,7 @@
 - [x] **Milestone 5 (E004)**: Benchmark YOLO26n Late Fusion via Weighted Boxes Fusion (WBF)
 - [x] **Milestone 5 (E005)**: Implement & train 4-channel Early Fusion baseline
 - [x] **Milestone 5 (E006)**: Implement & train dual-stream Feature Concatenation baseline
-- [ ] **Milestone 6 (E007)**: Implement & train proposed Thermal-Primary Asymmetric Reliability-Aware Gated Fusion [IN PROGRESS]
+- [x] **Milestone 6 (E007)**: Implement, train & benchmark proposed Asymmetric Reliability-Aware Gated Fusion
 - [ ] **Milestone 7**: Execute ablation studies and robustness testing under synthetic corruptions
 - [ ] **Milestone 8**: Final evaluation on untouched official test partition and compile research paper draft
 
@@ -231,10 +228,10 @@
 
 ## K. Next Actions
 
-1. **Researcher Review & Approval**: Present completion report of `E001_RGB_YOLO11N` and updated roadmap for approval.
-2. **Launch Experiment E002**: Upon approval, execute `E002_RGB_YOLO26N` (YOLO26n RGB-only, 640x640, Batch 8, AdamW, AMP, Max 40 epochs, Patience 12).
-3. **Launch Experiment E003**: Execute `E003_THERMAL_YOLO26N` (YOLO26n Thermal-only with preserved radiometric intensity).
-4. **Compile Unimodal Comparison**: Compare YOLO26n vs YOLO11n on RGB, and compare YOLO26n RGB vs Thermal.
+1. **Milestone 7 Ablation Studies**: Design and execute ablation studies isolating components of E007 (Quality Descriptors vs uniform gating, gate bypass, visible branch depth).
+2. **Robustness Testing**: Evaluate all models under controlled synthetic illumination/noise degradations.
+3. **Milestone 8 Test Set Evaluation**: Perform final inference sweep on the strictly preserved official LLVIP test partition (3,463 pairs).
+4. **Research Paper Compilation**: Format findings and comparative performance tables for academic publication.
 
 ---
 
